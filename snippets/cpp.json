@@ -1,0 +1,7 @@
+{
+  "todo": {
+    "prefix": "todo",
+    "body": ["// TODO(DWR): "],
+    "description": "TODO comment with reference to author"
+  }
+}
