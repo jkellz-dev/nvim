@@ -5,17 +5,47 @@ vim.g.mapleader = '\\'
 function M.setup()
   require("which-key").setup({})
 
+  -- insert mode
   require("which-key").register({
     ["j"] = {
       ["j"] = { "<esc>", "escape" },
     },
-  }, { mode = "i"})
+  }, { mode = "i" })
 
+  -- terminal mode
+  require("which-key").register({
+    ['<Leader>n'] = { '<C-\\><C-n>:FloatermNew<CR>' },
+    ['<Leader>['] = { '<C-\\><C-n>:FloatermPrev<CR>' },
+    ['<Leader>]'] = { '<C-\\><C-n>:FloatermNext<CR>' },
+    ['<C-n>'] = { '<C-\\><C-n>:FloatermNew<CR>' },
+    ['<C-t>'] = { '<C-\\><C-n>:FloatermToggle<CR>' },
+    ['<C-[>'] = { '<C-\\><C-n>:FloatermPrev<CR>' },
+    ['<C-]>'] = { '<C-\\><C-n>:FloatermNext<CR>' },
+  }, { mode = "t" })
+
+  -- normal mode
   require("which-key").register({
     ["<C-h>"] = { "<C-w>h", "Go to the window to the left" },
     ["<C-l>"] = { "<C-w>l", "Go to the window to the right" },
     ["<C-j>"] = { "<C-w>j", "Go to the window below" },
     ["<C-k>"] = { "<C-w>k", "Go to the window above" },
+
+    [",cc"] = { "<cmd>Lspsaga code_action<cr>", "Code actions" },
+    [",,"] = { "m`A,<Esc>``j", "Append comma and move down" },
+    [";;"] = { "m`A;<Esc>``j", "Append semicolon and move down" },
+
+    -- terminal
+    ['<C-t>'] = { ':FloatermToggle<CR>', "Toggle Terminal" },
+
+    ["g"] = {
+      name = "go to",
+      D = { "<cmd>lua vim.lsp.buf.declaration()<CR>", "Goto Declartion" },
+      d = { "<cmd>lua vim.lsp.buf.definition()<CR>", "Go to Definition" },
+      r = { "<cmd>lua vim.lsp.buf.references()<CR>", "Go to References" },
+      s = { "<cmd>lua vim.lsp.buf.signature_help()<CR>", "Go to Signature Help" },
+      i = { "<cmd>lua vim.lsp.buf.implementation()<CR>", "Go to Implementation" },
+      t = { "<cmd>lua vim.lsp.buf.type_definition()<CR>", "Go to Type Definition" },
+    },
     ["z"] = {
       name = "Folds",
       o = { "<cmd>foldopen<cr>", "Open fold" },
@@ -23,8 +53,12 @@ function M.setup()
       O = { "<cmd>lua require('ufo').openAllFolds<cr>", "Open all folds" },
       C = { "<cmd>lua require('ufo').closeAllFolds<cr>", "Close all folds" },
     },
+    ["<tab>"] = {
+      ["<tab>"] = { ":WhichKey<cr>", "Show WhichKey Help" },
+    },
     ["<leader>"] = {
       ["<leader>"] = { "<cmd>Telescope find_files hidden=true<cr>", "Find files" },
+      ["<tab>"] = { ":NeoTreeRevealToggle<CR>", "Toggle Neotree" },
       b = {
         name = "Buffer",
         f = { "<cmd>Neoformat<cr><cmd>w<cr>", "Format" },
@@ -41,18 +75,6 @@ function M.setup()
         ["-"] = { "15<C-w>-", "Decrease buffer height" },
         ["+"] = { "15<C-w>+", "Increase buffer height" },
       },
-      c = {
-        name = "CMake",
-        l = { "!ln -sf build/Debug/compile_commands.json .<cr>", "Link compilation database" },
-        c = { "<cmd>CMakeSelectConfigurePreset<cr>", "Select configure preset" },
-        g = { "<cmd>CMakeGenerate<cr>", "Generate" },
-        t = { "<cmd>CMakeSelectBuildTarget<cr>", "Select build target" },
-        b = { "<cmd>wa<cr><cmd>CMakeBuild<cr>", "Build" },
-        T = { "<cmd>CMakeSelectLaunchTarget<cr>", "Select launch target" },
-        r = { "<cmd>wa<cr><cmd>CMakeRun<cr>", "Run" },
-        d = { "<cmd>wa<cr><cmd>CMakeDebug<cr>", "Debug" },
-        s = { "<cmd>CMakeStop<cr>", "Stop" },
-      },
       d = {
         name = "Debug",
         b = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "Toggle breakpoint" },
@@ -64,11 +86,14 @@ function M.setup()
       },
       f = {
         name = "Fuzzy finder",
-        -- f = { "<cmd>Telescope find_files hidden=true<cr>", "Find files" },
         f = { "<cmd>Telescope live_grep<cr>", "Live grep" },
         b = { "<cmd>Telescope buffers<cr>", "Buffers" },
         h = { "<cmd>Telescope help_tags<cr>", "Help tags" },
         o = { "<cmd>Telescope oldfiles<cr>", "Recent files" },
+        g = { "<cmd>Telescope git_status<cr>", "Git files" },
+        r = { "<cmd>Telescope lsp_references<cr>", "LSP References" },
+        s = { "<cmd>Telescope spell_suggest<cr>", "Spelling Suggestions" },
+        t = { "<cmd>TodoTelescope<cr>", "TODOs" },
       },
       g = {
         name = "git",
@@ -126,7 +151,7 @@ function M.setup()
     ["<F6>"] = { "<cmd>lua require'dap'.step_over()<cr>", "Step over" },
     ["<F7>"] = { "<cmd>lua require'dap'.step_out()<cr>", "Step out" },
     ["<F8>"] = { "<cmd>lua require'dap'.continue()<cr>", "Continue" },
-  })
+  }, { mode = "n" })
 end
 
 return M

@@ -48,7 +48,9 @@ return require("lazy").setup({
           "pyright",
           "dockerls",
           "jsonls",
+          "yamlls",
           "clangd",
+          "gopls",
         },
         automatic_installation = true,
       })
@@ -61,18 +63,27 @@ return require("lazy").setup({
     end,
   },
 
+
+  -- creates listtle spinner
+  {
+    "j-hui/fidget.nvim",
+    config = function()
+      require("fidget").setup()
+    end,
+  }, -- LSP UI
+
   -- Local config files
   {
     "klen/nvim-config-local",
     config = function()
       require("config-local").setup({
         -- Default configuration (optional)
-        config_files = { ".vimrc.lua", ".vimrc" }, -- Config file patterns to load (lua supported)
+        config_files = { ".vimrc.lua", ".vimrc" },            -- Config file patterns to load (lua supported)
         hashfile = vim.fn.stdpath("data") .. "/config-local", -- Where the plugin keeps files data
-        autocommands_create = true, -- Create autocommands (VimEnter, DirectoryChanged)
-        commands_create = true, -- Create commands (ConfigSource, ConfigEdit, ConfigTrust, ConfigIgnore)
-        silent = false, -- Disable plugin messages (Config loaded/ignored)
-        lookup_parents = false, -- Lookup config files in parent directories
+        autocommands_create = true,                           -- Create autocommands (VimEnter, DirectoryChanged)
+        commands_create = true,                               -- Create commands (ConfigSource, ConfigEdit, ConfigTrust, ConfigIgnore)
+        silent = false,                                       -- Disable plugin messages (Config loaded/ignored)
+        lookup_parents = false,                               -- Lookup config files in parent directories
       })
     end,
   },
@@ -188,6 +199,10 @@ return require("lazy").setup({
     end,
   },
 
+  {
+    "lukas-reineke/lsp-format.nvim"
+  },
+
   -- clangd extensions (such as inlay hints)
   {
     "p00f/clangd_extensions.nvim",
@@ -201,7 +216,12 @@ return require("lazy").setup({
     "folke/trouble.nvim",
     dependencies = "nvim-tree/nvim-web-devicons",
     config = function()
-      require("trouble").setup({})
+      require("trouble").setup({
+        height = 15,
+        padding = false,
+        auto_open = true,
+        auto_close = true,
+      })
     end,
   },
 
@@ -235,6 +255,15 @@ return require("lazy").setup({
   },
 
   -- git
+  {
+    'f-person/git-blame.nvim',
+    config = function()
+      require('gitblame')
+      vim.g.gitblame_display_virtual_text = 0 -- Disable virtual text
+      vim.g.gitblame_date_format = '%r'
+      vim.g.gitblame_message_template = '<sha> | <summary> • <date> • <author>'
+    end
+  },
 
   {
     "TimUntersberger/neogit",
@@ -255,6 +284,7 @@ return require("lazy").setup({
       "mfussenegger/nvim-dap",
       "mfussenegger/nvim-dap-python",
       "theHamsta/nvim-dap-virtual-text",
+      "nvim-telescope/telescope-dap.nvim",
       "jbyuki/one-small-step-for-vimkind",
     },
     config = function()
@@ -328,6 +358,11 @@ return require("lazy").setup({
     end,
   },
 
+  -- Floaterm
+  {
+    'voldikss/vim-floaterm'
+  },
+
   -- Image viewer (doesn't support Terminator)
   -- {
   --   "edluffy/hologram.nvim",
@@ -383,7 +418,8 @@ return require("lazy").setup({
   -- camel case or snake case motion
   {
     "chaoren/vim-wordmotion",
-    config = function() end,
+    config = function()
+    end,
   },
 
   -- Highlight git changes in statuscol
@@ -430,6 +466,14 @@ return require("lazy").setup({
     version = false,
     config = function()
       require("plugins/mini-bracketed").setup()
+    end,
+  },
+
+  {
+    "echasnovski/mini.surround",
+    version = false,
+    config = function()
+      require("plugins/mini-surround").setup()
     end,
   },
 

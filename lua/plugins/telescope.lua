@@ -15,11 +15,11 @@ function M.setup()
       },
     },
     pickers = {
-        live_grep = {
-            additional_args = function(opts)
-                return {"--hidden"}
-            end
-        },
+        -- live_grep = {
+        --     additional_args = function(opts)
+        --         return {"--hidden"}
+        --     end
+        -- },
     },
     extensions = {
       -- Your extension configuration goes here:

@@ -1,12 +1,13 @@
 local lualine = {}
+local gitblame = require('gitblame')
 
 function lualine.setup()
   local config = {
     options = {
       icons_enabled = true,
       theme = "catppuccin",
-      section_separators = "",
-      component_separators = "",
+      component_separators = { left = '', right = '' },
+      section_separators = { left = '', right = '' },
       disabled_filetypes = { "packer", "NvimTree", "neo-tree" },
     },
     ignore_focus = {},
@@ -20,10 +21,14 @@ function lualine.setup()
     sections = {
       lualine_a = { "mode" },
       lualine_b = { "branch", "diff", "diagnostics" },
-      lualine_c = { "filename" },
+      -- lualine_c = { "filename" },
+      lualine_c = {
+        { gitblame.get_current_blame_text, cond = gitblame.is_blame_text_available }
+      },
+
       lualine_x = { "encoding", "fileformat", "filetype" },
-      lualine_y = { "progress" },
-      lualine_z = { "location" },
+      lualine_y = { "filename" },
+      lualine_z = { "progress", "location" },
     },
     inactive_sections = {
       lualine_a = {},

@@ -12,7 +12,7 @@ function debugging.setup()
 
   local mason_registry = require("mason-registry")
   local cpp_dap_executable = mason_registry.get_package("cpptools"):get_install_path()
-    .. "/extension/debugAdapters/bin/OpenDebugAD7"
+      .. "/extension/debugAdapters/bin/OpenDebugAD7"
 
   dap.adapters.cpp = {
     id = "cppdbg",
@@ -25,12 +25,20 @@ function debugging.setup()
   local liblldb_path = codelldb_root .. "lldb/lib/liblldb.so"
 
   dap.adapters.rust = require("rust-tools.dap").get_codelldb_adapter(codelldb_path, liblldb_path)
-
+  -- codelldb
+  dap.adapters.codelldb = {
+    type = "server",
+    port = "${port}",
+    executable = {
+      command = "/Users/jonathan/.bin/codelldb",
+      args = { "--port", "${port}" },
+    },
+  }
   -- To use the venv for debugpy that is installed with mason, obtain the path and pass it to `setup` as shown below.
   -- I don't think this is the best idea right now, because it requires that the user installs the packages into a venv that they didn't create and may not know of.
 
   -- local debugpy_root =   mason_registry.get_package("debugpy"):get_install_path()
-  require("dap-python").setup(--[[ debugpy_root.. "/venv/bin/python" --]])
+  require("dap-python").setup( --[[ debugpy_root.. "/venv/bin/python" --]])
   require('dap-python').test_runner = 'pytest'
 
   dap.configurations.lua = {
@@ -38,6 +46,38 @@ function debugging.setup()
       type = "nlua",
       request = "attach",
       name = "Attach to running Neovim instance",
+    },
+  }
+
+  dap.configurations.rust = {
+    {
+      type = "codelldb",
+      request = "launch",
+      -- This is where cargo outputs the executable
+      program = function()
+        os.execute("cargo build &> /dev/null")
+        return "target/debug/${workspaceFolderBasename}"
+      end,
+      args = function()
+        local argv = {}
+        arg = vim.fn.input(string.format("argv: "))
+        for a in string.gmatch(arg, "%S+") do
+          table.insert(argv, a)
+        end
+        return argv
+      end,
+      cwd = "${workspaceFolder}",
+      -- Uncomment if you want to stop at main
+      -- stopOnEntry = true,
+      MIMode = "gdb",
+      miDebuggerPath = "/usr/bin/gdb",
+      setupCommands = {
+        {
+          text = "-enable-pretty-printing",
+          description = "enable pretty printing",
+          ignoreFailures = false,
+        },
+      },
     },
   }
 
@@ -58,9 +98,9 @@ function debugging.setup()
       return " " .. variable.name .. " = " .. variable.value .. " "
     end,
     -- experimental features:
-    virt_text_pos = "eol", -- position of virtual text, see `:h nvim_buf_set_extmark()`
-    all_frames = false, -- show virtual text for all stack frames not only current. Only works for debugpy on my machine.
-    virt_lines = false, -- show virtual lines instead of virtual text (will flicker!)
+    virt_text_pos = "eol",   -- position of virtual text, see `:h nvim_buf_set_extmark()`
+    all_frames = false,      -- show virtual text for all stack frames not only current. Only works for debugpy on my machine.
+    virt_lines = false,      -- show virtual lines instead of virtual text (will flicker!)
     virt_text_win_col = nil, -- position the virtual text at a fixed window column (starting from the first text column) ,
   })
 
@@ -124,8 +164,8 @@ function debugging.setup()
       },
     },
     floating = {
-      max_height = nil, -- These can be integers or a float between 0 and 1.
-      max_width = nil, -- Floats will be treated as percentage of your screen.
+      max_height = nil,  -- These can be integers or a float between 0 and 1.
+      max_width = nil,   -- Floats will be treated as percentage of your screen.
       border = "single", -- Border style. Can be "single", "double" or "rounded"
       mappings = {
         close = { "q", "<Esc>" },

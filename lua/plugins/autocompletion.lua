@@ -25,12 +25,12 @@ function M.setup()
       end,
     },
     sources = cmp.config.sources({
-      { name = "path", keyword_length = 2 },
-      { name = "nvim_lsp", keyword_length = 2 },
-      { name = "buffer", keyword_length = 2 },
-      { name = "luasnip", keyword_length = 2 },
+      { name = "path",                    keyword_length = 2 },
+      { name = "nvim_lsp",                keyword_length = 2 },
+      { name = "buffer",                  keyword_length = 2 },
+      { name = "luasnip",                 keyword_length = 2 },
       { name = "nvim_lsp_signature_help", keyword_length = 2 },
-      { name = "dap", keyword_length = 2 },
+      { name = "dap",                     keyword_length = 2 },
     }, {}),
     sorting = {
       comparators = {
@@ -64,7 +64,9 @@ function M.setup()
     },
     mapping = {
       ["<C-Space>"] = cmp.mapping({ i = cmp.mapping.complete({ reason = cmp.ContextReason.Manual }) }),
-      ["<Tab>"] = cmp.mapping(function(fallback)
+      ["<tab>"] = cmp.mapping.confirm({ select = false, behavior = cmp.ConfirmBehavior.Insert }),
+      ["<cr>"] = cmp.mapping.confirm({ select = false, behavior = cmp.ConfirmBehavior.Insert }),
+      ["<C-j>"] = cmp.mapping(function(fallback)
         if cmp.visible() then
           cmp.select_next_item(select_opts)
         elseif luasnip.expand_or_jumpable() then
@@ -75,7 +77,7 @@ function M.setup()
           fallback()
         end
       end, { "i", "s" }),
-      ["<S-Tab>"] = cmp.mapping(function(fallback)
+      ["<C-k>"] = cmp.mapping(function(fallback)
         if cmp.visible() then
           cmp.select_prev_item(select_opts)
         elseif luasnip.jumpable(-1) then
@@ -86,7 +88,6 @@ function M.setup()
       end, { "i", "s" }),
       -- ["<C-r>"] = cmp.mapping.confirm({ select = true, behavior = cmp.ConfirmBehavior.Replace }), -- For some reason this mapping seems to mess with the <Tab> mapping ?!
       ["<C-i>"] = cmp.mapping.confirm({ select = true, behavior = cmp.ConfirmBehavior.Insert }),
-      ["<cr>"] = cmp.mapping.confirm({ select = false, behavior = cmp.ConfirmBehavior.Insert }),
       ["<Up>"] = cmp.mapping.select_prev_item(select_opts),
       ["<Down>"] = cmp.mapping.select_next_item(select_opts),
 

@@ -3,12 +3,18 @@ local M = {}
 function M.setup()
   require("nvim-treesitter.configs").setup({
     ensure_installed = {
-      "c",
-      "cpp",
-      "cmake",
       "bash",
+      "c",
+      "cmake",
+      "cpp",
+      "css",
       "dockerfile",
+      "go",
+      "gomod",
+      "gowork",
+      "hcl",
       "html",
+      "http",
       "java",
       "javascript",
       "json",
@@ -24,16 +30,24 @@ function M.setup()
       "ruby",
       "rust",
       "swift",
+      "toml",
       "typescript",
       "vim",
+      "yaml",
+      "zig"
     },
     sync_install = false,
     highlight = {
       enable = true,
     },
+    rainbow = {
+      enable = true,
+      extended_mode = true,
+      max_file_lines = nil,
+    },
   })
-  local vim = vim
-  local opt = vim.opt
+  -- local vim = vim
+  -- local opt = vim.opt
 
   -- opt.foldmethod = "expr"
   -- opt.foldexpr = "nvim_treesitter#foldexpr()"
