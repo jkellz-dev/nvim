@@ -30,6 +30,8 @@ function M.setup()
     ["<C-j>"] = { "<C-w>j", "Go to the window below" },
     ["<C-k>"] = { "<C-w>k", "Go to the window above" },
 
+    ["<C-w>w"] = { ":tabclose<cr>", "Close Tab" },
+
     [",cc"] = { "<cmd>Lspsaga code_action<cr>", "Code actions" },
     [",,"] = { "m`A,<Esc>``j", "Append comma and move down" },
     [";;"] = { "m`A;<Esc>``j", "Append semicolon and move down" },
@@ -82,7 +84,8 @@ function M.setup()
           "<cmd>lua require'dap.ext.vscode'.load_launchjs()<cr><cmd>lua require'dap'.continue()<cr>",
           "Launch debug session",
         },
-        t = { "<cmd>lua require'dap'.terminate()<cr><cmd>lua require'dapui'.close()<cr>", "Terminate debug session" },
+        t = { "<cmd>lua require'dap'.terminate()<cr><cmd>lua require'dapui'.close()<cr>",
+          "Terminate debug session" },
       },
       f = {
         name = "Fuzzy finder",
@@ -97,7 +100,9 @@ function M.setup()
       },
       g = {
         name = "git",
-        o = { "<cmd>Neogit<cr>", "Open Neogit" },
+        o = { "<cmd>lua require('neogit').open({ kind = 'floating' })<cr>", "Open Neogit" },
+        d = { ":DiffviewOpen<cr>", "Open DiffView" },
+        c = { ":DiffviewClose<cr>", "Close DiffView" },
       },
       l = {
         name = "LSP",
@@ -112,9 +117,11 @@ function M.setup()
       r = {
         name = "Rust",
         h = { "<cmd>lua require'rust-tools'.hover_actions.hover_actions()<cr>", "Hover actions" },
-        a = { "<cmd>lua require'rust-tools'.code_action_group.code_action_group()<cr>", "Code actions" },
+        a = { "<cmd>lua require'rust-tools'.code_action_group.code_action_group()<cr>",
+          "Code actions" },
         r = { "<cmd>wa<cr><cmd>lua require'rust-tools'.runnables.runnables()<cr>", "Runnables" },
-        d = { "<cmd>wa<cr><cmd>lua require'rust-tools'.debuggables.debuggables()<cr>", "Debuggables" },
+        d = { "<cmd>wa<cr><cmd>lua require'rust-tools'.debuggables.debuggables()<cr>",
+          "Debuggables" },
       },
       s = {
         name = "Search",
@@ -122,10 +129,10 @@ function M.setup()
         a = { "<cmd>lua require('searchbox').match_all()<cr>", "Match all" },
         r = { "<cmd>lua require('searchbox').replace()<cr>", "Replace" },
         o = { "<cmd>lua require('spectre').open()<cr>", "Open search dialogue" },
-        w = { "<cmd>lua require('spectre').open_visual({select_word=true})<cr>", "Search current word" },
+        w = { "<cmd>lua require('spectre').open_visual({select_word=true})<cr>",
+          "Search current word" },
         f = { "<cmd>lua require('spectre').open_file_search()<cr>", "Search in current file" },
       },
-      t = { name = "File Tree", t = { "<cmd>Neotree toggle<cr>", "Toggle" } },
       u = {
         name = "Undotree",
         t = { "<cmd>UndotreeToggle<cr><cmd>UndotreeFocus<cr>", "Toggle" },

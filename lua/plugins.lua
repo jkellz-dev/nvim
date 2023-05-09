@@ -58,6 +58,7 @@ return require("lazy").setup({
   },
   {
     "williamboman/mason.nvim",
+    build = ":MasonUpdate",
     config = function()
       require("mason").setup()
     end,
@@ -312,14 +313,18 @@ return require("lazy").setup({
     end,
   },
 
-  -- startup.nvim startup manager
   {
-    "startup-nvim/startup.nvim",
-    dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
-    config = function()
-      require("startup").setup({ theme = "dashboard" })
-    end,
+    'HiPhish/nvim-ts-rainbow2'
   },
+
+  -- startup.nvim startup manager
+  -- {
+  --   "startup-nvim/startup.nvim",
+  --   dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
+  --   config = function()
+  --     require("startup").setup({ theme = "dashboard" })
+  --   end,
+  -- },
 
   -- Statusline
   {
@@ -487,4 +492,7 @@ return require("lazy").setup({
   },
 
   { "kevinhwang91/promise-async" },
+  {
+    'mracos/mermaid.vim'
+  }
 })

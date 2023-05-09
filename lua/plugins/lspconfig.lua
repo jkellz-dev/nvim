@@ -30,6 +30,12 @@ function M.setup()
   lspconfig.dockerls.setup({ capabilities = capabilities, on_attach = on_attach })
   lspconfig.jsonls.setup({ capabilities = capabilities, on_attach = on_attach })
   lspconfig.pyright.setup({ capabilities = capabilities, on_attach = on_attach })
+
+  lspconfig.tsserver.setup { { capabilities = capabilities, on_attach = on_attach } }
+  lspconfig.terraformls.setup { { capabilities = capabilities, on_attach = on_attach } }
+  lspconfig.marksman.setup { { capabilities = capabilities, on_attach = on_attach } }
+  lspconfig.cssls.setup { { capabilities = capabilities, on_attach = on_attach } }
+  lspconfig.html.setup { { capabilities = capabilities, on_attach = on_attach } }
 end
 
 return M

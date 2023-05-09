@@ -21,11 +21,11 @@ function M.setup()
     auto_show_console = true,
     -- Change the default way of opening the commit popup
     commit_popup = {
-      kind = "split",
+      kind = "floating",
     },
     -- Change the default way of opening popups
     popup = {
-      kind = "split",
+      kind = "floating",
     },
     -- customize displayed signs
     signs = {
