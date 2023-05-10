@@ -1,7 +1,5 @@
 local M = {}
 
-vim.g.mapleader = '\\'
-
 function M.setup()
   require("which-key").setup({})
 
@@ -21,7 +19,7 @@ function M.setup()
     ['<C-t>'] = { '<C-\\><C-n>:FloatermToggle<CR>' },
     ['<C-[>'] = { '<C-\\><C-n>:FloatermPrev<CR>' },
     ['<C-]>'] = { '<C-\\><C-n>:FloatermNext<CR>' },
-  }, { mode = "t" })
+  }, { mode = "t", nowait = true })
 
   -- normal mode
   require("which-key").register({
@@ -37,8 +35,8 @@ function M.setup()
     [";;"] = { "m`A;<Esc>``j", "Append semicolon and move down" },
 
     -- Ariel
-    ["{"] = { '<cmd>AerialPrev<CR>', "Ariel Prev" },
-    ["}"] = { '<cmd>AerialNext<CR>', "Ariel Next" },
+    ["<C-[>"] = { '<cmd>AerialPrev<CR>', "Ariel Prev" },
+    ["<C-]>"] = { '<cmd>AerialNext<CR>', "Ariel Next" },
 
     -- terminal
     ['<C-t>'] = { ':FloatermToggle<CR>', "Toggle Terminal" },
@@ -68,8 +66,8 @@ function M.setup()
       ["n"] = {
         name = "Numbers",
         n = { ":set number<cr>", "Enable Line Numbers" },
-        r = { ":set number relativenumber<cr>", "Enable Relative Line Numbers" },
-        o = { ":set number! relativenumber!<cr>", "Disable Line Numbers" },
+        r = { ":set number<cr>:set relativenumber<cr>", "Enable Relative Line Numbers" },
+        o = { ":set number!<cr>:set relativenumber!<cr>", "Disable Line Numbers" },
       },
       b = {
         name = "Buffer",

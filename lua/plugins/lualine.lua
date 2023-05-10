@@ -50,9 +50,9 @@ function lualine.setup()
   end
 
   -- Inserts a component in lualine_x ot right section
-  local function ins_right(component)
-    table.insert(config.sections.lualine_x, component)
-  end
+  -- local function ins_right(component)
+  --   table.insert(config.sections.lualine_x, component)
+  -- end
 
   local cmake = require("cmake-tools")
   local icons = require("codicons")

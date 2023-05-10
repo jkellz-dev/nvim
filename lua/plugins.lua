@@ -12,6 +12,8 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+vim.g.mapleader = '\\'
+
 return require("lazy").setup({
   -- better UI
   {
@@ -62,14 +64,16 @@ return require("lazy").setup({
   -- creates little spinner
   {
     "j-hui/fidget.nvim",
-    config = function()
+    confi = function()
       require("fidget").setup()
     end,
   }, -- LSP UI
 
   -- Keybindings configuration / visualisation
   -- Note: Keybindings are configured in keybindings.lua for better self-documentation
-  { "folke/which-key.nvim" },
+  {
+    "folke/which-key.nvim",
+  },
 
   -- File Explorer
   {
@@ -219,7 +223,7 @@ return require("lazy").setup({
   {
     'f-person/git-blame.nvim',
     config = function()
-      require('plugins.gitblame').setup()
+      require('plugins.git').gitblame_setup()
     end
   },
 
@@ -368,7 +372,7 @@ return require("lazy").setup({
   {
     "lewis6991/gitsigns.nvim",
     config = function()
-      require("plugins.gitsigns").setup()
+      require("plugins.git").gitsigns_setup()
     end,
   },
 
