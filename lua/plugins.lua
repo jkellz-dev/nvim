@@ -42,15 +42,17 @@ return require("lazy").setup({
     config = function()
       require("mason-lspconfig").setup({
         ensure_installed = {
-          "lua_ls",
-          "rust_analyzer",
-          "cmake",
-          "pyright",
-          "dockerls",
-          "jsonls",
-          "yamlls",
+          "bashls",
           "clangd",
+          "cmake",
+          "dockerls",
           "gopls",
+          "jsonls",
+          "lua_ls",
+          "misspell",
+          "pyright",
+          "rust_analyzer",
+          "yamlls",
         },
         automatic_installation = true,
       })
