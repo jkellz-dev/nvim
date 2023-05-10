@@ -21,6 +21,29 @@ return require("lazy").setup({
     end,
   },
 
+  -- code outline window
+  {
+    'stevearc/aerial.nvim',
+    opts = {},
+    -- Optional dependencies
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+      "nvim-tree/nvim-web-devicons"
+    },
+    config = function()
+      require('aerial').setup({
+        backends = { "treesitter", "lsp", "man" },
+        layout = {
+          width = 25,
+          default_direction = "right",
+          placement = "edge",
+        },
+        open_automatic = true,
+        attach_mode = "global",
+      })
+    end
+  },
+
   -- better notifications
   {
     "rcarriga/nvim-notify",
@@ -86,12 +109,12 @@ return require("lazy").setup({
     config = function()
       require("config-local").setup({
         -- Default configuration (optional)
-        config_files = { ".vimrc.lua", ".vimrc" }, -- Config file patterns to load (lua supported)
+        config_files = { ".vimrc.lua", ".vimrc" },            -- Config file patterns to load (lua supported)
         hashfile = vim.fn.stdpath("data") .. "/config-local", -- Where the plugin keeps files data
-        autocommands_create = true, -- Create autocommands (VimEnter, DirectoryChanged)
-        commands_create = true, -- Create commands (ConfigSource, ConfigEdit, ConfigTrust, ConfigIgnore)
-        silent = false, -- Disable plugin messages (Config loaded/ignored)
-        lookup_parents = false, -- Lookup config files in parent directories
+        autocommands_create = true,                           -- Create autocommands (VimEnter, DirectoryChanged)
+        commands_create = true,                               -- Create commands (ConfigSource, ConfigEdit, ConfigTrust, ConfigIgnore)
+        silent = false,                                       -- Disable plugin messages (Config loaded/ignored)
+        lookup_parents = false,                               -- Lookup config files in parent directories
       })
     end,
   },
@@ -145,11 +168,6 @@ return require("lazy").setup({
     end,
   },
 
-  -- Formatters
-  {
-    "sbdchd/neoformat",
-  },
-
   -- Telescope, for file finders/browsers
   {
     "nvim-telescope/telescope.nvim",
@@ -185,7 +203,7 @@ return require("lazy").setup({
   {
     "L3mon4d3/LuaSnip",
     config = function()
-      require("plugins/luasnip").setup()
+      require("plugins/snip").setup()
     end,
   },
 
@@ -207,8 +225,12 @@ return require("lazy").setup({
     end,
   },
 
+  -- Formatters
   {
     "lukas-reineke/lsp-format.nvim"
+  },
+  {
+    "sbdchd/neoformat",
   },
 
   -- clangd extensions (such as inlay hints)
@@ -318,10 +340,6 @@ return require("lazy").setup({
     config = function()
       require("plugins/treesitter").setup()
     end,
-  },
-
-  {
-    'HiPhish/nvim-ts-rainbow2'
   },
 
   -- startup.nvim startup manager

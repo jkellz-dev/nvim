@@ -36,6 +36,10 @@ function M.setup()
     [",,"] = { "m`A,<Esc>``j", "Append comma and move down" },
     [";;"] = { "m`A;<Esc>``j", "Append semicolon and move down" },
 
+    -- Ariel
+    ["{"] = { '<cmd>AerialPrev<CR>', "Ariel Prev" },
+    ["}"] = { '<cmd>AerialNext<CR>', "Ariel Next" },
+
     -- terminal
     ['<C-t>'] = { ':FloatermToggle<CR>', "Toggle Terminal" },
 

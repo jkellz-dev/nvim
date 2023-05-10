@@ -5,6 +5,10 @@ function M.setup()
     defaults = {
       -- Default configuration for telescope goes here:
       -- config_key = value,
+      file_ignore_patterns = {
+        ".git",
+        "node_modules"
+      },
       mappings = {
         i = {
           -- map actions.which_key to <C-h> (default: <C-/>)
@@ -15,11 +19,11 @@ function M.setup()
       },
     },
     pickers = {
-        -- live_grep = {
-        --     additional_args = function(opts)
-        --         return {"--hidden"}
-        --     end
-        -- },
+      -- live_grep = {
+      --   additional_args = function(opts)
+      --     return { "--hidden" }
+      --   end
+      -- },
     },
     extensions = {
       -- Your extension configuration goes here:
