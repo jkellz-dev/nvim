@@ -10,6 +10,30 @@ local function on_attach(client, bufnr)
   lspformat.on_attach(client)
 end
 
+function M.mason_setup()
+  require("mason-lspconfig").setup({
+    ensure_installed = {
+      "bashls",
+      "clangd",
+      "cmake",
+      "cssls",
+      "dockerls",
+      "gopls",
+      "helm_ls",
+      "html",
+      "jsonls",
+      "lua_ls",
+      "marksman",
+      "pyright",
+      "rust_analyzer",
+      "terraformls",
+      "tsserver",
+      "yamlls",
+    },
+    automatic_installation = true,
+  })
+end
+
 function M.setup()
   local lspconfig = require("lspconfig")
   local capabilities = require("cmp_nvim_lsp").default_capabilities()

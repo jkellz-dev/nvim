@@ -65,6 +65,12 @@ function M.setup()
     ["<leader>"] = {
       ["<leader>"] = { "<cmd>Telescope find_files hidden=true<cr>", "Find files" },
       ["<tab>"] = { ":NeoTreeRevealToggle<CR>", "Toggle Neotree" },
+      ["n"] = {
+        name = "Numbers",
+        n = { ":set number<cr>", "Enable Line Numbers" },
+        r = { ":set number relativenumber<cr>", "Enable Relative Line Numbers" },
+        o = { ":set number! relativenumber!<cr>", "Disable Line Numbers" },
+      },
       b = {
         name = "Buffer",
         f = { "<cmd>Neoformat<cr><cmd>w<cr>", "Format" },
