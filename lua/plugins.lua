@@ -133,23 +133,7 @@ return require("lazy").setup({
       "nvim-lua/plenary.nvim",
       "nvim-tree/nvim-web-devicons",
       "MunifTanjim/nui.nvim",
-      {
-        "s1n7ax/nvim-window-picker",
-        version = "v1.*",
-        config = function()
-          require("window-picker").setup({
-            autoselect_one = true,
-            include_current = false,
-            filter_rules = {
-              bo = {
-                filetype = { "neo-tree", "neo-tree-popup", "notify" },
-                buftype = { "terminal", "quickfix" },
-              },
-            },
-            other_win_hl_color = "#e35e4f",
-          })
-        end,
-      },
+      "s1n7ax/nvim-window-picker",
     },
     config = function()
       require("plugins/neotree").setup()
@@ -199,6 +183,15 @@ return require("lazy").setup({
       require("plugins/autocompletion").setup()
     end,
   },
+
+  {
+    's1n7ax/nvim-window-picker',
+    tag = "v1.*",
+    config = function()
+      require("plugins/windowpicker").setup()
+    end,
+  },
+
   -- Code snippets
   {
     "L3mon4d3/LuaSnip",
