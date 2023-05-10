@@ -12,7 +12,6 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-vim.g.mapleader = '\\'
 
 return require("lazy").setup({
   -- better UI
@@ -227,17 +226,6 @@ return require("lazy").setup({
     end
   },
 
-  {
-    "TimUntersberger/neogit",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "sindrets/diffview.nvim"
-    },
-    config = function()
-      require("plugins.neogit").setup()
-    end,
-  },
-
   -- diffing/merging
   {
     "sindrets/diffview.nvim",
@@ -314,8 +302,21 @@ return require("lazy").setup({
     end,
   },
 
-  -- Floaterm
-  { 'voldikss/vim-floaterm' },
+  -- terminal
+  -- { 'voldikss/vim-floaterm' },
+  {
+    'numToStr/FTerm.nvim',
+    config = function()
+      require('FTerm').setup({
+        border     = 'double',
+        dimensions = {
+          height = 0.9,
+          width = 0.9,
+        },
+      })
+    end
+
+  },
 
   -- Colour theme
   {

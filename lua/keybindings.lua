@@ -1,3 +1,19 @@
+vim.g.mapleader = '\\'
+
+local fterm = require("FTerm")
+
+local gitui = fterm:new({
+  cmd = "lazygit",
+  dimensions = {
+    height = 0.9,
+    width = 0.9
+  }
+})
+
+local btop = fterm:new({
+  cmd = "btop"
+})
+
 local M = {}
 
 function M.setup()
@@ -12,13 +28,7 @@ function M.setup()
 
   -- terminal mode
   require("which-key").register({
-    ['<Leader>n'] = { '<C-\\><C-n>:FloatermNew<CR>' },
-    ['<Leader>['] = { '<C-\\><C-n>:FloatermPrev<CR>' },
-    ['<Leader>]'] = { '<C-\\><C-n>:FloatermNext<CR>' },
-    ['<C-n>'] = { '<C-\\><C-n>:FloatermNew<CR>' },
-    ['<C-t>'] = { '<C-\\><C-n>:FloatermToggle<CR>' },
-    ['<C-[>'] = { '<C-\\><C-n>:FloatermPrev<CR>' },
-    ['<C-]>'] = { '<C-\\><C-n>:FloatermNext<CR>' },
+    ['<C-t>'] = { '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>', "Toggle Terminal" },
   }, { mode = "t", nowait = true })
 
   -- normal mode
@@ -39,7 +49,16 @@ function M.setup()
     ["<C-]>"] = { '<cmd>AerialNext<CR>', "Ariel Next" },
 
     -- terminal
-    ['<C-t>'] = { ':FloatermToggle<CR>', "Toggle Terminal" },
+    ['<C-t>'] = {
+      ['<C-t>'] = { '<CMD>lua require("FTerm").toggle()<CR>', "Toggle Terminal" },
+      ['<C-b>'] = {
+        function()
+          btop:toggle()
+        end,
+        "Toggle BTOP"
+      },
+
+    },
 
     ["g"] = {
       name = "go to",
@@ -108,6 +127,12 @@ function M.setup()
       },
       g = {
         name = "git",
+        g = {
+          function()
+            gitui:toggle()
+          end,
+          "Git UI"
+        },
         o = { "<cmd>lua require('neogit').open({ kind = 'floating' })<cr>", "Open Neogit" },
         d = { ":DiffviewOpen<cr>", "Open DiffView" },
         c = { ":DiffviewClose<cr>", "Close DiffView" },

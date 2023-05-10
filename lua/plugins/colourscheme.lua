@@ -15,7 +15,8 @@ function colourscheme.setup()
   -- Settings for catppuccin
   require("catppuccin").setup({
     flavour = "frappe", -- latte, frappe, macchiato, mocha
-    background = { -- :h background
+    background = {
+                        -- :h background
       light = "latte",
       dark = "mocha",
     },
@@ -27,7 +28,7 @@ function colourscheme.setup()
       percentage = 0.15,
     },
     no_italic = false, -- Force no italic
-    no_bold = false, -- Force no bold
+    no_bold = false,   -- Force no bold
     styles = {
       comments = { "italic" },
       conditionals = { "italic" },
@@ -58,7 +59,7 @@ function colourscheme.setup()
       lsp_saga = true,
       markdown = true,
       mason = true,
-      neotree = true,
+      neotree = false,
       neogit = true,
       neotest = true, -- TODO: ?
       dap = {
