@@ -434,5 +434,5 @@ return require("lazy").setup({
   },
 
   -- { "kevinhwang91/promise-async" },
-  { 'mracos/mermaid.vim' }
+  { 'mracos/mermaid.vim' },
 })
