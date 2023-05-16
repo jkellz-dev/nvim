@@ -1,5 +1,3 @@
-vim.g.mapleader = " "
-
 -- plugins
 require("plugins")
 require("keybindings").setup()
@@ -19,6 +17,8 @@ set.tabstop = 2
 set.shiftwidth = 2
 set.expandtab = true
 
+set.cursorline = true
+
 set.clipboard = "unnamedplus"
 
 local undodir = vim.fn.expand("~/.nvim/undodir")
@@ -29,6 +29,6 @@ end
 set.undodir = undodir
 set.undofile = true
 
-  vim.api.nvim_create_autocmd("VimEnter", {
-    command = "set nornu nonu | Neotree reveal",
-  })
+vim.api.nvim_create_autocmd("VimEnter", {
+  command = "set nornu nonu | Neotree reveal",
+})
