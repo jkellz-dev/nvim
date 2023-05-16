@@ -186,6 +186,9 @@ function M.setup()
           "Jump to previous error",
         },
       },
+      z = {
+        z = { "<cmd>ZenMode<cr>", "Zen Mode for current Buffer" },
+      }
     },
     ["<F5>"] = { "<cmd>lua require'dap'.step_into()<cr>", "Step into" },
     ["<F6>"] = { "<cmd>lua require'dap'.step_over()<cr>", "Step over" },
