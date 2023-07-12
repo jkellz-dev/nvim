@@ -63,7 +63,7 @@ return require("lazy").setup({
   -- creates little spinner
   {
     "j-hui/fidget.nvim",
-    confi = function()
+    config = function()
       require("fidget").setup()
     end,
   }, -- LSP UI
