@@ -14,7 +14,6 @@ function M.mason_setup()
   require("mason-lspconfig").setup({
     ensure_installed = {
       "bashls",
-      "clangd",
       "cmake",
       "cssls",
       "dockerls",
@@ -30,7 +29,8 @@ function M.mason_setup()
       "tsserver",
       "yamlls",
     },
-    automatic_installation = true,
+    -- automatic_installation = true,
+    automatic_installation = { exclude = { "clangd" } }
   })
 end
 

@@ -66,7 +66,8 @@ return require("lazy").setup({
     config = function()
       require("fidget").setup()
     end,
-  }, -- LSP UI
+    tag = "legacy", -- TODO: check back when this has been updated
+  },                -- LSP UI
 
   -- Keybindings configuration / visualisation
   -- Note: Keybindings are configured in keybindings.lua for better self-documentation
