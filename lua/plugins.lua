@@ -437,4 +437,7 @@ return require("lazy").setup({
 
   -- { "kevinhwang91/promise-async" },
   { 'mracos/mermaid.vim' },
+
+  -- Markdown Syntax Highlight
+  { 'ixru/nvim-markdown' },
 })

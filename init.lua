@@ -32,3 +32,12 @@ set.undofile = true
 vim.api.nvim_create_autocmd("VimEnter", {
   command = "set nornu nonu | Neotree reveal",
 })
+
+local textedit = vim.api.nvim_create_augroup('filetypes', { clear = true })
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  group = "filetypes",
+  pattern = { "*.secrets" },
+  callback = function()
+    set.filetype = "yaml"
+  end,
+})

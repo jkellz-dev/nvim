@@ -8,7 +8,7 @@ function M.setup()
       on_attach = function(client, bufnr)
         require("nvim-navic").attach(client, bufnr)
       end,
-      filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "proto" },
+      filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
     },
     extensions = {
       -- defaults:
