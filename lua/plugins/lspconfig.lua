@@ -22,7 +22,6 @@ function M.mason_setup()
       "cssls",
       "dockerls",
       "gopls",
-      "helm_ls",
       "html",
       "jsonls",
       "lua_ls",
@@ -35,7 +34,7 @@ function M.mason_setup()
       "yamlls",
     },
     -- automatic_installation = true,
-    automatic_installation = { exclude = { "clangd" } }
+    automatic_installation = { exclude = { "clangd", "helm_ls" } }
   })
 end
 
@@ -62,14 +61,6 @@ function M.setup()
   lspconfig.clojure_lsp.setup { { capabilities = capabilities, on_attach = on_attach } }
   lspconfig.csharp_ls_lsp.setup { { capabilities = capabilities, on_attach = on_attach } }
   lspconfig.dockerls.setup({ capabilities = capabilities, on_attach = on_attach })
-  lspconfig.helm_ls.setup {
-    capabilities = capabilities,
-    on_attach = on_attach,
-    filetypes = { "helm" },
-    root_dir = function(fname)
-      return util.root_pattern('Chart.yaml')(fname)
-    end,
-  }
   lspconfig.html.setup { { capabilities = capabilities, on_attach = on_attach } }
   lspconfig.jsonls.setup({ capabilities = capabilities, on_attach = on_attach })
   lspconfig.marksman.setup { { capabilities = capabilities, on_attach = on_attach } }
@@ -86,6 +77,9 @@ function M.setup()
         hover = true,
         completion = true,
         keyOrdering = false,
+        format = {
+          enable = true,
+        },
         schemas = {
           ["https://bitbucket.org/atlassianlabs/atlascode/raw/675090546c756c95a8be83a91abbb80dfd6ae43c/resources/schemas/pipelines-schema.json"] = "/bitbucket-pipelines.yml",
           ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*"

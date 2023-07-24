@@ -59,6 +59,13 @@ return require("lazy").setup({
     end,
   },
 
+  {
+    "towolf/vim-helm",
+    config = function()
+      require('plugins.helm').setup()
+    end
+  },
+
 
   -- creates little spinner
   {
