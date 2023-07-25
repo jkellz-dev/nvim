@@ -24,7 +24,7 @@ return require("lazy").setup({
 
   -- code outline window
   {
-    'stevearc/aerial.nvim',
+    "stevearc/aerial.nvim",
     opts = {},
     -- Optional dependencies
     dependencies = {
@@ -176,6 +176,14 @@ return require("lazy").setup({
     end,
   },
 
+  {
+    "jose-elias-alvarez/null-ls.nvim",
+    dependencies = "nvim-lua/plenary.nvim",
+    config = function()
+      require("plugins.null_ls").setup()
+    end
+  },
+
   -- Formatters
   { "lukas-reineke/lsp-format.nvim" },
   { "sbdchd/neoformat" },
@@ -211,7 +219,18 @@ return require("lazy").setup({
   {
     "simrat39/rust-tools.nvim",
     config = function()
-      require("plugins.rust_tools").setup()
+      require("plugins.rust").setup()
+    end,
+  },
+  {
+    "saecki/crates.nvim",
+    tag = "v0.3.0",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "jose-elias-alvarez/null-ls.nvim"
+    },
+    config = function()
+      require("plugins.rust.crates").setup()
     end,
   },
 

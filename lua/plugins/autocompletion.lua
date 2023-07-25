@@ -31,6 +31,7 @@ function M.setup()
       { name = "luasnip",                 keyword_length = 2 },
       { name = "nvim_lsp_signature_help", keyword_length = 2 },
       { name = "dap",                     keyword_length = 2 },
+      { name = "crates",                  keyword_length = 2 },
     }, {}),
     sorting = {
       comparators = {
