@@ -16,6 +16,7 @@ function M.setup()
   local luasnip = require("luasnip")
   local lspkind = require("lspkind")
 
+
   local select_opts = { behavior = cmp.SelectBehavior.Select }
 
   cmp.setup({

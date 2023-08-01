@@ -55,6 +55,7 @@ function M.setup()
   })
 
   -- Rust and clangd are setup in their respective files in plugins/
+  lspconfig.bashls.setup { { capabilities = capabilities, on_attach = on_attach } }
   lspconfig.bufls.setup { { capabilities = capabilities, on_attach = on_attach } }
   lspconfig.cmake.setup({ capabilities = capabilities })
   lspconfig.cssls.setup { { capabilities = capabilities, on_attach = on_attach } }

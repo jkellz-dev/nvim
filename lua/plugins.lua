@@ -180,7 +180,7 @@ return require("lazy").setup({
     "jose-elias-alvarez/null-ls.nvim",
     dependencies = "nvim-lua/plenary.nvim",
     config = function()
-      require("plugins.null_ls").setup()
+      require("plugins.lspconfig.null_ls").setup()
     end
   },
 
