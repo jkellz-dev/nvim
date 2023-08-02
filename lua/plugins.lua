@@ -12,7 +12,6 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-
 return require("lazy").setup({
   -- better UI
   {
@@ -48,7 +47,7 @@ return require("lazy").setup({
   {
     "williamboman/mason-lspconfig.nvim",
     config = function()
-      require('plugins.lspconfig').mason_setup()
+      require('plugins.lsp.mason_config').setup()
     end,
   },
   {
@@ -162,7 +161,7 @@ return require("lazy").setup({
   {
     "neovim/nvim-lspconfig",
     config = function()
-      require("plugins.lspconfig").setup()
+      require('plugins.lsp.config').setup()
     end,
   },
 
@@ -180,7 +179,7 @@ return require("lazy").setup({
     "jose-elias-alvarez/null-ls.nvim",
     dependencies = "nvim-lua/plenary.nvim",
     config = function()
-      require("plugins.lspconfig.null_ls").setup()
+      require("plugins.lsp.null_ls").setup()
     end
   },
 
@@ -192,7 +191,7 @@ return require("lazy").setup({
   {
     "p00f/clangd_extensions.nvim",
     config = function()
-      require("plugins.clangd").setup()
+      require("plugins.lsp.clangd").setup()
     end,
   },
 

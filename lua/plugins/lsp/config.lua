@@ -2,40 +2,12 @@ local M = {}
 
 local navic = require("nvim-navic")
 local lspformat = require("lsp-format")
-local util = require('lspconfig.util')
+-- local util = require('lspconfig.util')
 
 local function on_attach(client, bufnr)
   navic.attach(client, bufnr)
 
   lspformat.on_attach(client)
-end
-
-function M.mason_setup()
-  require("mason-lspconfig").setup({
-    ensure_installed = {
-      "awk_ls",
-      "bashls",
-      "bufls",
-      "clojure_lsp",
-      "cmake",
-      "csharp_ls",
-      "cssls",
-      "dockerls",
-      "gopls",
-      "html",
-      "jsonls",
-      "lua_ls",
-      "marksman",
-      "pyright",
-      "rust_analyzer",
-      "sqlls",
-      "terraformls",
-      "tsserver",
-      "yamlls",
-    },
-    -- automatic_installation = true,
-    automatic_installation = { exclude = { "clangd", "helm_ls" } }
-  })
 end
 
 function M.setup()
@@ -60,9 +32,11 @@ function M.setup()
   lspconfig.cmake.setup({ capabilities = capabilities })
   lspconfig.cssls.setup { { capabilities = capabilities, on_attach = on_attach } }
   lspconfig.clojure_lsp.setup { { capabilities = capabilities, on_attach = on_attach } }
-  lspconfig.csharp_ls_lsp.setup { { capabilities = capabilities, on_attach = on_attach } }
+  lspconfig.csharp_ls.setup { { capabilities = capabilities, on_attach = on_attach } }
   lspconfig.dockerls.setup({ capabilities = capabilities, on_attach = on_attach })
   lspconfig.html.setup { { capabilities = capabilities, on_attach = on_attach } }
+  lspconfig.gopls.setup { { capabilities = capabilities, on_attach = on_attach } }
+  lspconfig.golangci_lint_ls.setup { { capabilities = capabilities, on_attach = on_attach } }
   lspconfig.jsonls.setup({ capabilities = capabilities, on_attach = on_attach })
   lspconfig.marksman.setup { { capabilities = capabilities, on_attach = on_attach } }
   lspconfig.pyright.setup({ capabilities = capabilities, on_attach = on_attach })
