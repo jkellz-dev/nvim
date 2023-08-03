@@ -26,8 +26,8 @@ function M.setup()
       end,
     },
     sources = cmp.config.sources({
-      { name = "path",                    keyword_length = 2 },
       { name = "nvim_lsp",                keyword_length = 2 },
+      { name = "path",                    keyword_length = 2 },
       { name = "buffer",                  keyword_length = 2 },
       { name = "luasnip",                 keyword_length = 2 },
       { name = "nvim_lsp_signature_help", keyword_length = 2 },
@@ -56,8 +56,8 @@ function M.setup()
       format = lspkind.cmp_format({
         mode = "symbol_text",
         menu = {
-          buffer = "[Buffer]",
           nvim_lsp = "[LSP]",
+          buffer = "[Buffer]",
           luasnip = "[LuaSnip]",
           nvim_lua = "[Lua]",
           latex_symbols = "[Latex]",
