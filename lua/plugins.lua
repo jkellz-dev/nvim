@@ -358,7 +358,7 @@ return require("lazy").setup({
   {
     "lukas-reineke/indent-blankline.nvim",
     config = function()
-      require("plugins.indent_blankline").setup()
+      require("plugins.guides.indent_blankline").setup()
     end,
   },
 
@@ -367,7 +367,7 @@ return require("lazy").setup({
     "HiPhish/rainbow-delimiters.nvim",
     url = "https://gitlab.com/HiPhish/rainbow-delimiters.nvim",
     config = function()
-      require("plugins.rainbow").setup()
+      require("plugins.guides.rainbow").setup()
     end,
   },
 
