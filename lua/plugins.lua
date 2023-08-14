@@ -451,6 +451,14 @@ return require("lazy").setup({
     end,
   },
 
+  {
+    "echasnovski/mini.align",
+    version = false,
+    config = function()
+      require("plugins.mini-align").setup()
+    end,
+  },
+
   -- Search & replace
   {
     "windwp/nvim-spectre",
