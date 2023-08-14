@@ -187,14 +187,6 @@ return require("lazy").setup({
   { "lukas-reineke/lsp-format.nvim" },
   { "sbdchd/neoformat" },
 
-  {
-    "HiPhish/rainbow-delimiters.nvim",
-    url = "https://gitlab.com/HiPhish/rainbow-delimiters.nvim",
-    config = function()
-      require("plugins.rainbow").setup()
-    end,
-  },
-
   -- clangd extensions (such as inlay hints)
   {
     "p00f/clangd_extensions.nvim",
@@ -369,6 +361,16 @@ return require("lazy").setup({
       require("plugins.indent_blankline").setup()
     end,
   },
+
+  -- colors delimiters in alternating colors (Rainbow Parens)
+  {
+    "HiPhish/rainbow-delimiters.nvim",
+    url = "https://gitlab.com/HiPhish/rainbow-delimiters.nvim",
+    config = function()
+      require("plugins.rainbow").setup()
+    end,
+  },
+
 
   -- jump motions
   {
