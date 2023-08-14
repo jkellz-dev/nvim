@@ -187,6 +187,14 @@ return require("lazy").setup({
   { "lukas-reineke/lsp-format.nvim" },
   { "sbdchd/neoformat" },
 
+  {
+    "HiPhish/rainbow-delimiters.nvim",
+    url = "https://gitlab.com/HiPhish/rainbow-delimiters.nvim",
+    config = function()
+      require("plugins.rainbow").setup()
+    end,
+  },
+
   -- clangd extensions (such as inlay hints)
   {
     "p00f/clangd_extensions.nvim",

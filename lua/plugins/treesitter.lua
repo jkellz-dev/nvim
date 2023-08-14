@@ -24,6 +24,8 @@ function M.setup()
       "lua",
       "make",
       "markdown",
+      "markdown_inline",
+      "mermaid",
       "proto",
       "python",
       "regex",
