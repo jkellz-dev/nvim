@@ -187,6 +187,14 @@ return require("lazy").setup({
   { "lukas-reineke/lsp-format.nvim" },
   { "sbdchd/neoformat" },
 
+  {
+    "ahmedkhalf/jupyter-nvim",
+    cmd = "UpdateRemotePlugins",
+    config = function()
+      require("plugins.python_notebooks")
+    end
+  },
+
   -- clangd extensions (such as inlay hints)
   {
     "p00f/clangd_extensions.nvim",
@@ -240,7 +248,7 @@ return require("lazy").setup({
   {
     "numToStr/Comment.nvim",
     config = function()
-      require("Comment").setup()
+      require("plugins.comment").setup()
     end,
   },
 

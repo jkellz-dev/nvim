@@ -218,8 +218,6 @@ function neotree.setup()
       },
     },
   })
-
-  vim.cmd([[nnoremap \ :Neotree reveal<cr>]])
 end
 
 return neotree

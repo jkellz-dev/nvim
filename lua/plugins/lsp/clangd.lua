@@ -5,7 +5,14 @@ function M.setup()
     server = {
       cmd = { "clangd", "--query-driver=/**/*", "--clang-tidy", "--header-insertion=never" },
       capabilities = require("cmp_nvim_lsp").default_capabilities(),
+      --[[ capabilities = function()
+        local capabilities = require("cmp_nvim_lsp").default_capabilities()
+        capabilities.offsetEncoding = { "utf-16" }
+        return capabilities
+      end, ]]
       on_attach = function(client, bufnr)
+        -- require("clangd_extensions.inlay_hints").setup_autocmd()
+        -- require("clangd_extensions.inlay_hints").set_inlay_hints()
         require("nvim-navic").attach(client, bufnr)
       end,
       filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
@@ -62,26 +69,25 @@ function M.setup()
           TemplateTemplateParm = "🅃",
           TemplateParamObject = "🅃",
         },
-        --[[ These require codicons (https://github.com/microsoft/vscode-codicons)
-            role_icons = {
-                type = "",
-                declaration = "",
-                expression = "",
-                specifier = "",
-                statement = "",
-                ["template argument"] = "",
-            },
+        -- These require codicons (https://github.com/microsoft/vscode-codicons)
+        --[[ role_icons = {
+          type = "",
+          declaration = "",
+          expression = "",
+          specifier = "",
+          statement = "",
+          ["template argument"] = "",
+        },
 
-            kind_icons = {
-                Compound = "",
-                Recovery = "",
-                TranslationUnit = "",
-                PackExpansion = "",
-                TemplateTypeParm = "",
-                TemplateTemplateParm = "",
-                TemplateParamObject = "",
-            }, ]]
-
+        kind_icons = {
+          Compound = "",
+          Recovery = "",
+          TranslationUnit = "",
+          PackExpansion = "",
+          TemplateTypeParm = "",
+          TemplateTemplateParm = "",
+          TemplateParamObject = "",
+        }, ]]
         highlights = {
           detail = "Comment",
         },

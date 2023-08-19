@@ -29,14 +29,15 @@ function M.setup()
   -- Rust and clangd are setup in their respective files in plugins/
   lspconfig.bashls.setup { { capabilities = capabilities, on_attach = on_attach } }
   lspconfig.bufls.setup { { capabilities = capabilities, on_attach = on_attach } }
-  lspconfig.cmake.setup({ capabilities = capabilities })
-  lspconfig.cssls.setup { { capabilities = capabilities, on_attach = on_attach } }
+  lspconfig.clangd.setup { { capabilities = capabilities, on_attach = on_attach } }
   lspconfig.clojure_lsp.setup { { capabilities = capabilities, on_attach = on_attach } }
+  lspconfig.cmake.setup({ capabilities = capabilities })
   lspconfig.csharp_ls.setup { { capabilities = capabilities, on_attach = on_attach } }
+  lspconfig.cssls.setup { { capabilities = capabilities, on_attach = on_attach } }
   lspconfig.dockerls.setup({ capabilities = capabilities, on_attach = on_attach })
-  lspconfig.html.setup { { capabilities = capabilities, on_attach = on_attach } }
-  lspconfig.gopls.setup { { capabilities = capabilities, on_attach = on_attach } }
   lspconfig.golangci_lint_ls.setup { { capabilities = capabilities, on_attach = on_attach } }
+  lspconfig.gopls.setup { { capabilities = capabilities, on_attach = on_attach } }
+  lspconfig.html.setup { { capabilities = capabilities, on_attach = on_attach } }
   lspconfig.jsonls.setup({ capabilities = capabilities, on_attach = on_attach })
   lspconfig.marksman.setup { { capabilities = capabilities, on_attach = on_attach } }
   lspconfig.pyright.setup({ capabilities = capabilities, on_attach = on_attach })
