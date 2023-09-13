@@ -57,7 +57,7 @@ function M.setup()
           enable = true,
         },
         schemas = {
-          ["https://bitbucket.org/atlassianlabs/atlascode/raw/675090546c756c95a8be83a91abbb80dfd6ae43c/resources/schemas/pipelines-schema.json"] = "/bitbucket-pipelines.yml",
+          ["https://bitbucket.org/atlassianlabs/atlascode/raw/6acdb1770eed36496d78d57a5b484be17fddd225/resources/schemas/pipelines-schema.json"] = "/bitbucket-pipelines.yml",
           ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*"
         }
       }
