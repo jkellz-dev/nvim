@@ -231,7 +231,7 @@ return require("lazy").setup({
   },
   {
     "saecki/crates.nvim",
-    tag = "v0.3.0",
+    tag = "v0.4.0",
     dependencies = {
       "nvim-lua/plenary.nvim",
       "jose-elias-alvarez/null-ls.nvim"
@@ -365,6 +365,8 @@ return require("lazy").setup({
   -- Indentation guides
   {
     "lukas-reineke/indent-blankline.nvim",
+    main = "ibl",
+    opts = {},
     config = function()
       require("plugins.guides.indent_blankline").setup()
     end,
