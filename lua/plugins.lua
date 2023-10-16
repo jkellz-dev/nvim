@@ -491,4 +491,5 @@ return require("lazy").setup({
 
   -- Markdown Syntax Highlight
   { 'ixru/nvim-markdown' },
+
 })
