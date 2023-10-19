@@ -76,6 +76,10 @@ function M.setup()
       O = { "<cmd>lua require('ufo').openAllFolds<cr>", "Open all folds" },
       C = { "<cmd>lua require('ufo').closeAllFolds<cr>", "Close all folds" },
     },
+    -- ["<opt>"] = {
+    --   name = "bufferline",
+    --   1 = { "<cmd>BuferlineGoToBuffer 1" }
+    -- },
     ["<tab>"] = {
       ["<tab>"] = { ":WhichKey<cr>", "Show WhichKey Help" },
     },
@@ -103,6 +107,10 @@ function M.setup()
         [">"] = { "15<C-w>>", "Increase buffer width" },
         ["-"] = { "15<C-w>-", "Decrease buffer height" },
         ["+"] = { "15<C-w>+", "Increase buffer height" },
+        ["1"] = { ":BufferLineGoToBuffer 1<CR>" },
+        ["2"] = { ":BufferLineGoToBuffer 2<CR>" },
+        ["3"] = { ":BufferLineGoToBuffer 3<CR>" },
+        ["4"] = { ":BufferLineGoToBuffer 4<CR>" },
       },
       d = {
         name = "Debug",

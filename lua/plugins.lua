@@ -103,10 +103,14 @@ return require("lazy").setup({
   -- bufferline ("tabs")
   {
     "akinsho/bufferline.nvim",
-    dependencies = { "nvim-tree/nvim-web-devicons", "catppuccin/nvim" },
+    dependencies = {
+      "nvim-tree/nvim-web-devicons",
+      "catppuccin/nvim",
+    },
     config = function()
       require("plugins.bufferline").setup()
     end,
+    version = "*",
   },
 
   -- Telescope, for file finders/browsers
