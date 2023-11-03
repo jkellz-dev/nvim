@@ -498,4 +498,7 @@ return require("lazy").setup({
   -- Markdown Syntax Highlight
   { 'ixru/nvim-markdown' },
 
+  -- Justfile syntax highlighting
+  { 'NoahTheDuke/vim-just' },
+  { 'martinda/Jenkinsfile-vim-syntax' },
 })
