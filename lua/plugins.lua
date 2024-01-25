@@ -116,7 +116,11 @@ return require("lazy").setup({
   -- Telescope, for file finders/browsers
   {
     "nvim-telescope/telescope.nvim",
-    dependencies = { "nvim-lua/plenary.nvim", "BurntSushi/ripgrep" },
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "BurntSushi/ripgrep",
+      "folke/trouble.nvim"
+    },
     config = function()
       require("plugins.telescope").setup()
     end,
@@ -171,9 +175,13 @@ return require("lazy").setup({
 
   -- Lsp additions
   {
-    "glepnir/lspsaga.nvim",
-    branch = "main",
-    dependencies = { "catppuccin/nvim", "lewis6991/gitsigns.nvim" },
+    "nvimdev/lspsaga.nvim",
+    dependencies = {
+      'nvim-treesitter/nvim-treesitter',
+      'nvim-tree/nvim-web-devicons',
+      "catppuccin/nvim",
+      -- "lewis6991/gitsigns.nvim",
+    },
     config = function()
       require("plugins.lspsaga").setup()
     end,
@@ -490,21 +498,6 @@ return require("lazy").setup({
     config = function()
       require("plugins.spectre").setup()
     end,
-  },
-
-  {
-    "rinx/nvim-ripgrep",
-    config = function()
-      require("nvim-ripgrep").setup {
-        runner = require('nvim-ripgrep.run').ripgrep, -- grep command
-        prompt = "❯ ", -- prompt
-        window = {
-          width = 0.8,
-          border = "rounded",
-        },
-        open_qf_fn = require('nvim-ripgrep.extensions').trouble_open_qf,
-      }
-    end
   },
 
   -- { "kevinhwang91/promise-async" },

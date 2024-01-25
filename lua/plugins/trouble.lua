@@ -2,10 +2,11 @@ local M = {}
 
 function M.setup()
   require("trouble").setup({
-    height = 15,
-    padding = false,
-    auto_open = true,
     auto_close = true,
+    auto_open = true,
+    height = 15,
+    mode = "quickfix",
+    padding = false,
   })
 end
 
