@@ -10,10 +10,10 @@ function colourscheme.setup()
   require("onedark").setup({
     style = "darker",
     highlights = {
-      DiagnosticVirtualTextError = { fg = '#ED1D24' },
+      DiagnosticVirtualTextError = { fg = '#FF7276' },
       DiagnosticVirtualTextWarn = { fg = '#FFEF00' },
-      DiagnosticVirtualTextInfo = { fg = '#0827F5' },
-      DiagnosticVirtualTextHint = { fg = '#9B26B6' },
+      DiagnosticVirtualTextInfo = { fg = '#F1EB9C' },
+      DiagnosticVirtualTextHint = { fg = '#C5B4E3' },
     }
   })
   require("onedark").load()
