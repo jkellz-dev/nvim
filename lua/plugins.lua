@@ -492,6 +492,21 @@ return require("lazy").setup({
     end,
   },
 
+  {
+    "rinx/nvim-ripgrep",
+    config = function()
+      require("nvim-ripgrep").setup {
+        runner = require('nvim-ripgrep.run').ripgrep, -- grep command
+        prompt = "❯ ", -- prompt
+        window = {
+          width = 0.8,
+          border = "rounded",
+        },
+        open_qf_fn = require('nvim-ripgrep.extensions').trouble_open_qf,
+      }
+    end
+  },
+
   -- { "kevinhwang91/promise-async" },
   { 'mracos/mermaid.vim' },
 
@@ -501,4 +516,23 @@ return require("lazy").setup({
   -- Justfile syntax highlighting
   { 'NoahTheDuke/vim-just' },
   { 'martinda/Jenkinsfile-vim-syntax' },
+
+  -- AI
+  -- {
+  --   'Exafunction/codeium.vim',
+  --   event = 'BufEnter'
+  -- },
+  {
+    "Exafunction/codeium.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "hrsh7th/nvim-cmp",
+      "onsails/lspkind.nvim",
+    },
+    config = function()
+      require("codeium").setup({
+      })
+    end,
+    event = 'BufEnter'
+  },
 })

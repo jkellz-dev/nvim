@@ -77,7 +77,8 @@ function M.setup()
       C = { "<cmd>lua require('ufo').closeAllFolds<cr>", "Close all folds" },
     },
     ["<tab>"] = {
-      ["<tab>"] = { ":WhichKey<cr>", "Show WhichKey Help" },
+      ["w"] = { ":WhichKey<cr>", "Show WhichKey Help" },
+      ["<tab>"] = { "<cmd>lua require'nvim-ripgrep'.grep()<cr>", "Open ripgrep window" },
     },
     ["<leader>"] = {
       ["<leader>"] = { "<cmd>Telescope find_files hidden=true<cr>", "Find files" },
@@ -155,6 +156,7 @@ function M.setup()
         r = { "<cmd>wa<cr><cmd>lua require'rust-tools'.runnables.runnables()<cr>", "Runnables" },
         d = { "<cmd>wa<cr><cmd>lua require'rust-tools'.debuggables.debuggables()<cr>",
           "Debuggables" },
+        e = { "<cmd>lua require'rust-tools'.expand_macro.expand_macro()<cr>", "Expand macro" },
       },
       s = {
         name = "Search",
