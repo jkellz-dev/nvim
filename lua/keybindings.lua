@@ -79,7 +79,8 @@ function M.setup()
     },
     ["<tab>"] = {
       ["w"] = { ":WhichKey<cr>", "Show WhichKey Help" },
-      ["<tab>"] = { "<cmd>lua require'nvim-ripgrep'.grep()<cr>", "Open ripgrep window" },
+      ["<tab>"] = { "<cmd>Telescope oldfiles<cr>", "Recent files" },
+
     },
     ["<leader>"] = {
       ["<leader>"] = { "<cmd>Telescope find_files hidden=true<cr>", "Find files" },

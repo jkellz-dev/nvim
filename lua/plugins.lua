@@ -85,7 +85,7 @@ return require("lazy").setup({
   {
     -- "kyazdani42/nvim-tree.lua",
     "nvim-neo-tree/neo-tree.nvim",
-    branch = "v2.x",
+    branch = "v3.x",
     dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-tree/nvim-web-devicons",
@@ -365,10 +365,11 @@ return require("lazy").setup({
     end
   },
 
-  -- Colour theme
+  -- Color theme
+
   {
-    -- "navarasu/onedark.nvim",
-    "catppuccin/nvim",
+    "navarasu/onedark.nvim",
+    -- "catppuccin/nvim",
     config = function()
       require("plugins.colourscheme").setup()
     end,

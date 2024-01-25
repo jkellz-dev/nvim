@@ -7,16 +7,23 @@ function colourscheme.setup()
   set.background = "dark"
 
   -- Settings for onedark
-  -- require("onedark").setup({
-  --   style = "warm",
-  -- })
-  -- require("onedark").load()
+  require("onedark").setup({
+    style = "darker",
+    highlights = {
+      DiagnosticVirtualTextError = { fg = '#ED1D24' },
+      DiagnosticVirtualTextWarn = { fg = '#FFEF00' },
+      DiagnosticVirtualTextInfo = { fg = '#0827F5' },
+      DiagnosticVirtualTextHint = { fg = '#9B26B6' },
+    }
+  })
+  require("onedark").load()
+
 
   -- Settings for catppuccin
   require("catppuccin").setup({
     flavour = "frappe", -- latte, frappe, macchiato, mocha
     background = {
-                        -- :h background
+      -- :h background
       light = "latte",
       dark = "mocha",
     },
@@ -88,8 +95,9 @@ function colourscheme.setup()
     },
   })
 
+
   -- setup must be called before loading
-  vim.cmd.colorscheme("catppuccin")
+  vim.cmd.colorscheme("onedark")
 end
 
 return colourscheme

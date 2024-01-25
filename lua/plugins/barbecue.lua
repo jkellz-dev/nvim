@@ -6,7 +6,7 @@ function M.setup()
 
   require("barbecue").setup({
     create_autocmd = false, -- prevent barbecue from updating itself automatically
-    theme = "catppuccin",
+    theme = "onedark",
   })
 
   vim.api.nvim_create_autocmd({

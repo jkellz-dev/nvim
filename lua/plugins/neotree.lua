@@ -173,7 +173,9 @@ function neotree.setup()
           --".null-ls_*",
         },
       },
-      follow_current_file = true,
+      follow_current_file = {
+        enabled = true,
+      },
       group_empty_dirs = false,
       hijack_netrw_behavior = "open_current",
       use_libuv_file_watcher = true,
@@ -192,7 +194,9 @@ function neotree.setup()
       },
     },
     buffers = {
-      follow_current_file = true,
+      follow_current_file = {
+        enabled = true,
+      },
       group_empty_dirs = false,
       show_unloaded = true,
       window = {

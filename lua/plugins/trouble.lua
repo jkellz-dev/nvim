@@ -5,7 +5,6 @@ function M.setup()
     auto_close = true,
     auto_open = true,
     height = 15,
-    mode = "quickfix",
     padding = false,
   })
 end
