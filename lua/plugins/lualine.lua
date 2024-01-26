@@ -5,10 +5,10 @@ function lualine.setup()
   local config = {
     options = {
       icons_enabled = true,
-      theme = "onedark",
+      theme = "onedark", -- lkjsdfd
       component_separators = { left = '', right = '' },
       section_separators = { left = '', right = '' },
-      disabled_filetypes = { "packer", "NvimTree", "neo-tree" },
+      disabled_filetypes = { "packer", "NvimTree", "neo-tree", "neo-tree-popup", "notify", 'Trouble', 'Outline', 'aerial', 'Fterm', 'Lspsaga' },
     },
     ignore_focus = {},
     always_divide_middle = true,

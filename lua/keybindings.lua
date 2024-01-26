@@ -63,7 +63,8 @@ function M.setup()
     ["g"] = {
       name = "Go To",
       D = { "<cmd>lua vim.lsp.buf.declaration()<CR>", "Goto Declartion" },
-      d = { "<cmd>lua vim.lsp.buf.definition()<CR>", "Go to Definition" },
+      -- d = { "<cmd>lua vim.lsp.buf.definition()<CR>", "Go to Definition" },
+      d = { "<cmd>Lspsaga goto_definition<CR>", "Go to Definition" },
       r = { "<cmd>Lspsaga finder<CR>", "Show References" },
       s = { "<cmd>lua vim.lsp.buf.signature_help()<CR>", "Go to Signature Help" },
       i = { "<cmd>lua vim.lsp.buf.implementation()<CR>", "Go to Implementation" },

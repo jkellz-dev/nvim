@@ -12,7 +12,7 @@ function colourscheme.setup()
     highlights = {
       DiagnosticVirtualTextError = { fg = '#FF7276' },
       DiagnosticVirtualTextWarn = { fg = '#FFEF00' },
-      DiagnosticVirtualTextInfo = { fg = '#F1EB9C' },
+      DiagnosticVirtualTextInfo = { fg = '#A4DBE8' },
       DiagnosticVirtualTextHint = { fg = '#C5B4E3' },
     }
   })
