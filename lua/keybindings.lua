@@ -160,7 +160,9 @@ function M.setup()
         x = { "<cmd>Lspsaga show_line_diagnostics<cr>", "Show line diagnostics" },
       },
       m = {
-        m = { "<cmd>MarkdownPreviewToggle<cr>", "Toggle Markdown preview" },
+        m = { "<cmd>MarkdownPreview<cr>", "Start Markdown Preview" },
+        s = { "<cmd>MarkdownPreviewStop<cr>", "Stop Markdown Preview" },
+        t = { "<cmd>MarkdownPreviewToggle<cr>", "Toggle Markdown Preview" },
 
       },
       r = {
