@@ -506,6 +506,15 @@ return require("lazy").setup({
 
   -- Markdown Syntax Highlight
   { 'ixru/nvim-markdown' },
+  {
+    "iamcco/markdown-preview.nvim",
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    build = "cd app && yarn install",
+    init = function()
+      vim.g.mkdp_filetypes = { "markdown" }
+    end,
+    ft = { "markdown" },
+  },
 
   -- Justfile syntax highlighting
   { 'NoahTheDuke/vim-just' },

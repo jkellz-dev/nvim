@@ -84,7 +84,7 @@ function M.setup()
 
     },
     ["<leader>"] = {
-      ["<leader>"] = { "<cmd>Telescope find_files hidden=true<cr>", "Find files" },
+      ["<leader>"] = { "<cmd>Telescope fd hidden=true<cr>", "Find files" },
       ["<tab>"] = { ":NeoTreeRevealToggle<CR>", "Toggle Neotree" },
       ["n"] = {
         name = "Numbers",
@@ -125,12 +125,14 @@ function M.setup()
         f = { "<cmd>Telescope live_grep<cr>", "Live grep" },
         g = { "<cmd>Telescope git_status<cr>", "Git files" },
         h = { "<cmd>Telescope search_history<cr>", "Search History" },
+        i = { "<cmd>Telescope lsp_implementations<cr>", "Jumplist" },
         j = { "<cmd>Telescope jumplist<cr>", "Jumplist" },
         m = { "<cmd>Telescope marks<cr>", "Marks" },
         o = { "<cmd>Telescope oldfiles<cr>", "Recent files" },
         q = { "<cmd>Telescope quickfix<cr>", "Quickfix" },
         r = { "<cmd>Telescope lsp_references<cr>", "LSP References" },
-        s = { "<cmd>Telescope spell_suggest<cr>", "Spelling Suggestions" },
+        s = { "<cmd>Telescope lsp_document_symbols<cr>", "Symbols" },
+        z = { "<cmd>Telescope spell_suggest<cr>", "Spelling Suggestions" },
         t = { "<cmd>TodoTelescope<cr>", "TODOs" },
         ["?"] = { "<cmd>Telescope help_tags<cr>", "Help tags" },
       },
@@ -150,11 +152,16 @@ function M.setup()
         name = "LSP",
         a = { "<cmd>Lspsaga code_action<cr>", "Code actions" },
         d = { "<cmd>Trouble lsp_definitions<cr>", "Go to definition" },
+        f = { "<cmd>Lspsaga finder<CR>", "Show References" },
         h = { "<cmd>ClangdSwitchSourceHeader<cr>", "Toggle header/source" },
         p = { "<cmd>Lspsaga peek_definition<cr>", "Peek definition" },
-        u = { "<cmd>Trouble lsp_references<cr>", "Show usages" },
         r = { "<cmd>Lspsaga rename<cr>", "Rename" },
+        u = { "<cmd>Trouble lsp_references<cr>", "Show usages" },
         x = { "<cmd>Lspsaga show_line_diagnostics<cr>", "Show line diagnostics" },
+      },
+      m = {
+        m = { "<cmd>MarkdownPreviewToggle<cr>", "Toggle Markdown preview" },
+
       },
       r = {
         name = "Rust",

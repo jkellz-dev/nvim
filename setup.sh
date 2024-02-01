@@ -1,3 +1,5 @@
+#!/bin/sh
+
 pip install compdb
 sudo npm i -g tree-sitter-cli
 
