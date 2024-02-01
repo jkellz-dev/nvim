@@ -10,6 +10,9 @@ function colourscheme.setup()
   require("onedark").setup({
     style = "darker",
     highlights = {
+      -- IncSearch = { fg = '#FFFFFF', bg = '#5218fa' },
+      -- CurSearch = { fg = '#FFFFFF', bg = '#5218fa' },
+      -- Search = { fg = '#FFFFFF', bg = '#bb3385' },
       DiagnosticVirtualTextError = { fg = '#FF7276' },
       DiagnosticVirtualTextWarn = { fg = '#FFEF00' },
       DiagnosticVirtualTextInfo = { fg = '#A4DBE8' },
