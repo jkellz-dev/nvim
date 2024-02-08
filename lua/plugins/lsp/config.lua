@@ -7,7 +7,7 @@ local lspformat = require("lsp-format")
 local function on_attach(client, bufnr)
   navic.attach(client, bufnr)
 
-  lspformat.on_attach(client)
+  -- lspformat.on_attach(client)
 end
 
 function M.setup()

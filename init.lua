@@ -46,8 +46,8 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   group = "filetypes",
   pattern = { "*.md" },
   callback = function()
-    set.tabstop = 4
-    set.shiftwidth = 4
+    set.tabstop = 2
+    set.shiftwidth = 2
     set.expandtab = true
   end,
 })

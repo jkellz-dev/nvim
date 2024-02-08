@@ -196,6 +196,24 @@ return require("lazy").setup({
   },
 
   -- Formatters
+  {
+    'stevearc/conform.nvim',
+    event = { "BufWritePre" },
+    cmd = { "ConformInfo" },
+    opts = {
+      formatters_by_ft = {
+        rust = { "rustfmt" },
+        lua = { "stylua" },
+        python = { { "isort", "black" } },
+        javascript = { { "prettierd", "prettier" } },
+      },
+      format_on_save = { timeout_ms = 500, lsp_fallback = true },
+    },
+    init = function()
+      -- If you want the formatexpr, here is the place to set it
+      vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
+    end,
+  },
   { "lukas-reineke/lsp-format.nvim" },
   { "sbdchd/neoformat" },
 
@@ -235,11 +253,21 @@ return require("lazy").setup({
   },
 
   -- rust
+  -- {
+  --   "simrat39/rust-tools.nvim",
+  --   config = function()
+  --     require("plugins.rust").setup()
+  --   end,
+  -- },
   {
-    "simrat39/rust-tools.nvim",
-    config = function()
-      require("plugins.rust").setup()
-    end,
+    'mrcjkb/rustaceanvim',
+    version = '^4', -- Recommended
+    ft = { 'rust' },
+    dependencies = {
+      "mfussenegger/nvim-dap",
+      'nvim-treesitter/nvim-treesitter',
+
+    }
   },
   {
     "saecki/crates.nvim",
@@ -253,6 +281,22 @@ return require("lazy").setup({
     end,
   },
 
+  -- Test
+  {
+    "nvim-neotest/neotest",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "antoinemadec/FixCursorHold.nvim",
+      "nvim-treesitter/nvim-treesitter"
+    },
+    config = function()
+      require("neotest").setup({
+        adapters = {
+          require('rustaceanvim.neotest')
+        },
+      })
+    end
+  },
   -- csv
   { "mechatroner/rainbow_csv" },
 
@@ -279,6 +323,10 @@ return require("lazy").setup({
   },
 
   -- debugging
+
+  {
+    "mfussenegger/nvim-dap"
+  },
   {
     "rcarriga/nvim-dap-ui",
     -- version = "v3.2.2",
@@ -511,7 +559,22 @@ return require("lazy").setup({
   { 'mracos/mermaid.vim' },
 
   -- Markdown Syntax Highlight
-  { 'ixru/nvim-markdown' },
+
+  -- {
+  --   'ixru/nvim-markdown',
+  --   init = function()
+  --     vim.g.vim_markdown_conceal = 0
+  --   end
+  --
+  -- },
+  -- {
+  --   'jakewvincent/mkdnflow.nvim',
+  --   config = function()
+  --     require('mkdnflow').setup({
+  --       -- Config goes here; leave blank for defaults
+  --     })
+  --   end
+  -- },
   {
     "iamcco/markdown-preview.nvim",
     cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },

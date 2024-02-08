@@ -27,11 +27,11 @@ function debugging.setup()
     command = cpp_dap_executable,
   }
 
-  local codelldb_root = mason_registry.get_package("codelldb"):get_install_path() .. "/extension/"
-  local codelldb_path = codelldb_root .. "adapter/codelldb"
-  local liblldb_path = codelldb_root .. "lldb/lib/liblldb.so"
+  -- local codelldb_root = mason_registry.get_package("codelldb"):get_install_path() .. "/extension/"
+  -- local codelldb_path = codelldb_root .. "adapter/codelldb"
+  -- local liblldb_path = codelldb_root .. "lldb/lib/liblldb.so"
 
-  dap.adapters.rust = require("rust-tools.dap").get_codelldb_adapter(codelldb_path, liblldb_path)
+  -- dap.adapters.rust = require("rust-tools.dap").get_codelldb_adapter(codelldb_path, liblldb_path)
   -- codelldb
   dap.adapters.codelldb = {
     type = "server",
@@ -56,37 +56,37 @@ function debugging.setup()
     },
   }
 
-  dap.configurations.rust = {
-    {
-      type = "codelldb",
-      request = "launch",
-      -- This is where cargo outputs the executable
-      program = function()
-        os.execute("cargo build &> /dev/null")
-        return "target/debug/${workspaceFolderBasename}"
-      end,
-      args = function()
-        local argv = {}
-        arg = vim.fn.input(string.format("argv: "))
-        for a in string.gmatch(arg, "%S+") do
-          table.insert(argv, a)
-        end
-        return argv
-      end,
-      cwd = "${workspaceFolder}",
-      -- Uncomment if you want to stop at main
-      -- stopOnEntry = true,
-      MIMode = "gdb",
-      miDebuggerPath = "/usr/bin/gdb",
-      setupCommands = {
-        {
-          text = "-enable-pretty-printing",
-          description = "enable pretty printing",
-          ignoreFailures = false,
-        },
-      },
-    },
-  }
+  -- dap.configurations.rust = {
+  --   {
+  --     type = "codelldb",
+  --     request = "launch",
+  --     -- This is where cargo outputs the executable
+  --     program = function()
+  --       os.execute("cargo build &> /dev/null")
+  --       return "target/debug/${workspaceFolderBasename}"
+  --     end,
+  --     args = function()
+  --       local argv = {}
+  --       arg = vim.fn.input(string.format("argv: "))
+  --       for a in string.gmatch(arg, "%S+") do
+  --         table.insert(argv, a)
+  --       end
+  --       return argv
+  --     end,
+  --     cwd = "${workspaceFolder}",
+  --     -- Uncomment if you want to stop at main
+  --     -- stopOnEntry = true,
+  --     MIMode = "gdb",
+  --     miDebuggerPath = "/usr/bin/gdb",
+  --     setupCommands = {
+  --       {
+  --         text = "-enable-pretty-printing",
+  --         description = "enable pretty printing",
+  --         ignoreFailures = false,
+  --       },
+  --     },
+  --   },
+  -- }
 
   dap.adapters.nlua = function(callback, config)
     callback({ type = "server", host = config.host or "127.0.0.1", port = config.port or 8086 })
