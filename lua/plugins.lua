@@ -284,21 +284,21 @@ return require("lazy").setup({
         -- Plugin configuration
         -- tools = {},
         -- LSP configuration
-        server = {
-          on_attach = function(client, bufnr)
-            -- you can also put keymaps in here
-            -- vim.lsp.inlay_hint(bufnr, true)
-            -- require("inlay-hints").on_attach(client, bufnr)
-            -- require("lsp-inlayhints").on_attach(client, bufnr)
-          end,
-          --     settings = {
-          --       -- rust-analyzer language server configuration
-          --       ["rust-analyzer"] = {},
-          --     },
-          --   },
-          --   -- DAP configuration
-          --   dap = {},
-        },
+        -- server = {
+        --   on_attach = function(client, bufnr)
+        --     -- you can also put keymaps in here
+        --     -- vim.lsp.inlay_hint.(bufnr, true)
+        --     -- require("inlay-hints").on_attach(client, bufnr)
+        --     -- require("lsp-inlayhints").on_attach(client, bufnr)
+        --   end,
+        --   --     settings = {
+        --   --       -- rust-analyzer language server configuration
+        --   --       ["rust-analyzer"] = {},
+        --   --     },
+        --   --   },
+        --   --   -- DAP configuration
+        --   --   dap = {},
+        -- },
       }
     end,
   },
