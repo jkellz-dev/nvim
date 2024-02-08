@@ -29,7 +29,6 @@ function rust_tools.setup()
       capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities()),
       on_attach = function(client, bufnr)
         require("nvim-navic").attach(client, bufnr)
-        require("lsp-format").on_attach(client)
       end,
 
       -- checkOnSave = {
