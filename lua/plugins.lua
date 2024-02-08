@@ -28,11 +28,11 @@ return require("lazy").setup({
     -- Optional dependencies
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
-      "nvim-tree/nvim-web-devicons"
+      "nvim-tree/nvim-web-devicons",
     },
     config = function()
       require("plugins.aerial").setup()
-    end
+    end,
   },
 
   -- better notifications
@@ -47,7 +47,7 @@ return require("lazy").setup({
   {
     "williamboman/mason-lspconfig.nvim",
     config = function()
-      require('plugins.lsp.mason_config').setup()
+      require("plugins.lsp.mason_config").setup()
     end,
   },
   {
@@ -61,10 +61,9 @@ return require("lazy").setup({
   {
     "towolf/vim-helm",
     config = function()
-      require('plugins.helm').setup()
-    end
+      require("plugins.helm").setup()
+    end,
   },
-
 
   -- creates little spinner
   {
@@ -73,7 +72,7 @@ return require("lazy").setup({
       require("fidget").setup()
     end,
     tag = "legacy", -- TODO: check back when this has been updated
-  },                -- LSP UI
+  }, -- LSP UI
 
   -- Keybindings configuration / visualisation
   -- Note: Keybindings are configured in keybindings.lua for better self-documentation
@@ -119,7 +118,7 @@ return require("lazy").setup({
     dependencies = {
       "nvim-lua/plenary.nvim",
       "BurntSushi/ripgrep",
-      "folke/trouble.nvim"
+      "folke/trouble.nvim",
     },
     config = function()
       require("plugins.telescope").setup()
@@ -150,8 +149,8 @@ return require("lazy").setup({
   },
 
   {
-    's1n7ax/nvim-window-picker',
-    version = 'v1.*',
+    "s1n7ax/nvim-window-picker",
+    version = "v1.*",
     config = function()
       require("plugins.windowpicker").setup()
     end,
@@ -169,7 +168,7 @@ return require("lazy").setup({
   {
     "neovim/nvim-lspconfig",
     config = function()
-      require('plugins.lsp.config').setup()
+      require("plugins.lsp.config").setup()
     end,
   },
 
@@ -177,8 +176,8 @@ return require("lazy").setup({
   {
     "nvimdev/lspsaga.nvim",
     dependencies = {
-      'nvim-treesitter/nvim-treesitter',
-      'nvim-tree/nvim-web-devicons',
+      "nvim-treesitter/nvim-treesitter",
+      "nvim-tree/nvim-web-devicons",
       "catppuccin/nvim",
       -- "lewis6991/gitsigns.nvim",
     },
@@ -192,12 +191,12 @@ return require("lazy").setup({
     dependencies = "nvim-lua/plenary.nvim",
     config = function()
       require("plugins.lsp.null_ls").setup()
-    end
+    end,
   },
 
   -- Formatters
   {
-    'stevearc/conform.nvim',
+    "stevearc/conform.nvim",
     event = { "BufWritePre" },
     cmd = { "ConformInfo" },
     opts = {
@@ -222,8 +221,19 @@ return require("lazy").setup({
     cmd = "UpdateRemotePlugins",
     config = function()
       require("plugins.python_notebooks")
-    end
+    end,
   },
+
+  -- inlay hints
+  -- {
+  --   "lvimuser/lsp-inlayhints.nvim",
+  -- },
+  -- {
+  --   "simrat39/inlay-hints.nvim",
+  --   config = function()
+  --     require("inlay-hints").setup()
+  --   end,
+  -- },
 
   -- clangd extensions (such as inlay hints)
   {
@@ -238,7 +248,7 @@ return require("lazy").setup({
     "folke/trouble.nvim",
     dependencies = "nvim-tree/nvim-web-devicons",
     config = function()
-      require('plugins.trouble').setup()
+      require("plugins.trouble").setup()
     end,
   },
 
@@ -259,22 +269,45 @@ return require("lazy").setup({
   --     require("plugins.rust").setup()
   --   end,
   -- },
+
   {
-    'mrcjkb/rustaceanvim',
-    version = '^4', -- Recommended
-    ft = { 'rust' },
+    "mrcjkb/rustaceanvim",
+    event = "BufReadPost",
+    version = "^4", -- Recommended
+    ft = { "rust" },
     dependencies = {
       "mfussenegger/nvim-dap",
-      'nvim-treesitter/nvim-treesitter',
-
-    }
+      "nvim-treesitter/nvim-treesitter",
+    },
+    config = function()
+      vim.g.rustaceanvim = {
+        -- Plugin configuration
+        -- tools = {},
+        -- LSP configuration
+        server = {
+          on_attach = function(client, bufnr)
+            -- you can also put keymaps in here
+            -- vim.lsp.inlay_hint(bufnr, true)
+            -- require("inlay-hints").on_attach(client, bufnr)
+            -- require("lsp-inlayhints").on_attach(client, bufnr)
+          end,
+          --     settings = {
+          --       -- rust-analyzer language server configuration
+          --       ["rust-analyzer"] = {},
+          --     },
+          --   },
+          --   -- DAP configuration
+          --   dap = {},
+        },
+      }
+    end,
   },
   {
     "saecki/crates.nvim",
     tag = "v0.4.0",
     dependencies = {
       "nvim-lua/plenary.nvim",
-      "jose-elias-alvarez/null-ls.nvim"
+      "jose-elias-alvarez/null-ls.nvim",
     },
     config = function()
       require("plugins.rust.crates").setup()
@@ -287,15 +320,15 @@ return require("lazy").setup({
     dependencies = {
       "nvim-lua/plenary.nvim",
       "antoinemadec/FixCursorHold.nvim",
-      "nvim-treesitter/nvim-treesitter"
+      "nvim-treesitter/nvim-treesitter",
     },
     config = function()
       require("neotest").setup({
         adapters = {
-          require('rustaceanvim.neotest')
+          require("rustaceanvim.neotest"),
         },
       })
-    end
+    end,
   },
   -- csv
   { "mechatroner/rainbow_csv" },
@@ -310,22 +343,22 @@ return require("lazy").setup({
 
   -- git
   {
-    'f-person/git-blame.nvim',
+    "f-person/git-blame.nvim",
     config = function()
-      require('plugins.git').gitblame_setup()
-    end
+      require("plugins.git").gitblame_setup()
+    end,
   },
 
   -- diffing/merging
   {
     "sindrets/diffview.nvim",
-    dependencies = "nvim-lua/plenary.nvim"
+    dependencies = "nvim-lua/plenary.nvim",
   },
 
   -- debugging
 
   {
-    "mfussenegger/nvim-dap"
+    "mfussenegger/nvim-dap",
   },
   {
     "rcarriga/nvim-dap-ui",
@@ -346,7 +379,7 @@ return require("lazy").setup({
   {
     "jayp0521/mason-nvim-dap.nvim",
     config = function()
-      require('plugins.debugging').mason_setup()
+      require("plugins.debugging").mason_setup()
     end,
   },
 
@@ -399,18 +432,17 @@ return require("lazy").setup({
   -- terminal
   -- { 'voldikss/vim-floaterm' },
   {
-    'numToStr/FTerm.nvim',
+    "numToStr/FTerm.nvim",
     config = function()
-      require('plugins.terminal').setup()
-    end
-
+      require("plugins.terminal").setup()
+    end,
   },
 
   {
-    'folke/zen-mode.nvim',
+    "folke/zen-mode.nvim",
     config = function()
-      require('plugins.zenmode').setup()
-    end
+      require("plugins.zenmode").setup()
+    end,
   },
 
   -- Color theme
@@ -447,7 +479,7 @@ return require("lazy").setup({
     "nvchad/nvim-colorizer.lua",
     config = function()
       require("colorizer").setup()
-    end
+    end,
   },
   -- jump motions
   {
@@ -479,8 +511,7 @@ return require("lazy").setup({
   -- camel case or snake case motion
   {
     "chaoren/vim-wordmotion",
-    config = function()
-    end,
+    config = function() end,
   },
 
   -- Highlight git changes in statuscol
@@ -556,7 +587,7 @@ return require("lazy").setup({
   },
 
   -- { "kevinhwang91/promise-async" },
-  { 'mracos/mermaid.vim' },
+  { "mracos/mermaid.vim" },
 
   -- Markdown Syntax Highlight
 
@@ -586,8 +617,8 @@ return require("lazy").setup({
   },
 
   -- Justfile syntax highlighting
-  { 'NoahTheDuke/vim-just' },
-  { 'martinda/Jenkinsfile-vim-syntax' },
+  { "NoahTheDuke/vim-just" },
+  { "martinda/Jenkinsfile-vim-syntax" },
 
   -- AI
   -- {
@@ -602,9 +633,8 @@ return require("lazy").setup({
       "onsails/lspkind.nvim",
     },
     config = function()
-      require("codeium").setup({
-      })
+      require("codeium").setup({})
     end,
-    event = 'BufEnter'
+    event = "BufEnter",
   },
 })
