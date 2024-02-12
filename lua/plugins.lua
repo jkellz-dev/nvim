@@ -141,7 +141,6 @@ return require("lazy").setup({
       "rafamadriz/friendly-snippets",
       "onsails/lspkind.nvim",
       "p00f/clangd_extensions.nvim",
-      "rcarriga/cmp-dap",
     },
     config = function()
       require("plugins.autocompletion").setup()
@@ -201,16 +200,22 @@ return require("lazy").setup({
     cmd = { "ConformInfo" },
     opts = {
       formatters_by_ft = {
-        fish = { "fish_inden" },
+        fish = { "fish_indent" },
         go = { "goimports", "gofmt" },
         javascript = { { "prettierd", "prettier" } },
         json = { "jq" },
-        justfile = { "just" },
+        justfile = { "just", "typos" },
         lua = { "stylua" },
-        markdown = { { "mdformat", "markdownlint-cli2" } },
+        markdown = { { "mdformat", "markdownlint-cli2" }, "typos" },
+        mysql = { "sql_formatter", "typos" },
+        postgresql = { "sql_formatter", "typos" },
+        psql = { "sql_formatter", "typos" },
         python = { "isort", "black" },
-        rust = { "rustfmt" },
+        rust = { "rustfmt", "typos" },
         sh = { "shellcheck" },
+        sql = { "sql_formatter", "typos" },
+        sqlite = { "sql_formatter", "typos" },
+        terraform = { "terraform_fmt" },
         yaml = { "yq" },
       },
       format_on_save = { timeout_ms = 500, lsp_fallback = true },
@@ -260,14 +265,14 @@ return require("lazy").setup({
   },
 
   -- cmake
-  {
-    -- "cdelledonne/vim-cmake",
-    "Civitasv/cmake-tools.nvim",
-    dependencies = "nvim-lua/plenary.nvim",
-    config = function()
-      require("plugins.cmake").setup()
-    end,
-  },
+  -- {
+  --   -- "cdelledonne/vim-cmake",
+  --   "Civitasv/cmake-tools.nvim",
+  --   dependencies = "nvim-lua/plenary.nvim",
+  --   config = function()
+  --     require("plugins.cmake").setup()
+  --   end,
+  -- },
 
   -- rust
   -- {
@@ -280,32 +285,59 @@ return require("lazy").setup({
   {
     "mrcjkb/rustaceanvim",
     event = "BufReadPost",
-    version = "^4", -- Recommended
+    version = "^4",
     ft = { "rust" },
     dependencies = {
-      "mfussenegger/nvim-dap",
       "nvim-treesitter/nvim-treesitter",
     },
+
     config = function()
       vim.g.rustaceanvim = {
         -- Plugin configuration
-        -- tools = {},
+        tools = {},
         -- LSP configuration
-        -- server = {
-        --   on_attach = function(client, bufnr)
-        --     -- you can also put keymaps in here
-        --     -- vim.lsp.inlay_hint.(bufnr, true)
-        --     -- require("inlay-hints").on_attach(client, bufnr)
-        --     -- require("lsp-inlayhints").on_attach(client, bufnr)
-        --   end,
-        --   --     settings = {
-        --   --       -- rust-analyzer language server configuration
-        --   --       ["rust-analyzer"] = {},
-        --   --     },
-        --   --   },
-        --   --   -- DAP configuration
-        --   --   dap = {},
-        -- },
+        server = {
+          -- on_attach = function(client, bufnr)
+          --   -- you can also put keymaps in here
+          --   -- vim.lsp.inlay_hint.(bufnr, true)
+          --   -- require("inlay-hints").on_attach(client, bufnr)
+          --   -- require("lsp-inlayhints").on_attach(client, bufnr)
+          -- end,
+          settings = {
+            -- to enable rust-analyzer settings visit:
+            -- https://github.com/rust-analyzer/rust-analyzer/blob/master/docs/user/generated_config.adoc
+            ["rust-analyzer"] = {
+              checkOnSave = {
+                command = "clippy",
+                allFeatures = true,
+                overrideCommand = {
+                  "cargo",
+                  "clippy",
+                  "--workspace",
+                  "--all-targets",
+                  "--all-features",
+                  "--message-format=json",
+                  "--",
+                  "-D",
+                  "warnings",
+                },
+              },
+              assist = {
+                importGranularity = "module",
+                importPrefix = "self",
+              },
+              cargo = {
+                buildScripts = {
+                  enable = true,
+                },
+                loadOutDirsFromCheck = true,
+              },
+              procMacro = {
+                enable = true,
+              },
+            },
+          },
+        },
       }
     end,
   },
@@ -385,31 +417,31 @@ return require("lazy").setup({
 
   -- debugging
 
-  {
-    "mfussenegger/nvim-dap",
-  },
-  {
-    "rcarriga/nvim-dap-ui",
-    -- version = "v3.2.2",
-    dependencies = {
-      "mfussenegger/nvim-dap",
-      "mfussenegger/nvim-dap-python",
-      "theHamsta/nvim-dap-virtual-text",
-      "nvim-telescope/telescope-dap.nvim",
-      "jbyuki/one-small-step-for-vimkind",
-    },
-    config = function()
-      require("plugins.debugging").setup()
-    end,
-  },
-
-  -- Mason configuration for dap
-  {
-    "jayp0521/mason-nvim-dap.nvim",
-    config = function()
-      require("plugins.debugging").mason_setup()
-    end,
-  },
+  -- {
+  --   "mfussenegger/nvim-dap",
+  -- },
+  -- {
+  --   "rcarriga/nvim-dap-ui",
+  --   -- version = "v3.2.2",
+  --   dependencies = {
+  --     "mfussenegger/nvim-dap",
+  --     "mfussenegger/nvim-dap-python",
+  --     "theHamsta/nvim-dap-virtual-text",
+  --     "nvim-telescope/telescope-dap.nvim",
+  --     "jbyuki/one-small-step-for-vimkind",
+  --   },
+  --   config = function()
+  --     require("plugins.debugging").setup()
+  --   end,
+  -- },
+  --
+  -- -- Mason configuration for dap
+  -- {
+  --   "jayp0521/mason-nvim-dap.nvim",
+  --   config = function()
+  --     require("plugins.debugging").mason_setup()
+  --   end,
+  -- },
 
   -- Tresitter for minimal source code highlighting
   {
@@ -521,7 +553,10 @@ return require("lazy").setup({
   -- folds
   {
     "kevinhwang91/nvim-ufo",
-    dependencies = { "kevinhwang91/promise-async", "nvim-treesitter/nvim-treesitter" },
+    dependencies = {
+      "kevinhwang91/promise-async",
+      "nvim-treesitter/nvim-treesitter",
+    },
     config = function()
       require("plugins.nvim_ufo").setup()
     end,
@@ -530,7 +565,10 @@ return require("lazy").setup({
   -- statuscol
   {
     "luukvbaal/statuscol.nvim",
-    dependencies = { "mfussenegger/nvim-dap", "lewis6991/gitsigns.nvim" },
+    dependencies = {
+      -- "mfussenegger/nvim-dap",
+      "lewis6991/gitsigns.nvim",
+    },
     config = function()
       require("plugins.statuscol").setup()
     end,
