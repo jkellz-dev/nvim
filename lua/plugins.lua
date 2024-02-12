@@ -343,7 +343,7 @@ return require("lazy").setup({
   },
   {
     "saecki/crates.nvim",
-    tag = "v0.4.0",
+    event = { "BufRead Cargo.toml" },
     dependencies = {
       "nvim-lua/plenary.nvim",
       "jose-elias-alvarez/null-ls.nvim",
