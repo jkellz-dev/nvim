@@ -1,4 +1,4 @@
-vim.g.mapleader = '\\'
+vim.g.mapleader = "\\"
 
 local fterm = require("FTerm")
 
@@ -6,12 +6,12 @@ local gitui = fterm:new({
   cmd = "lazygit",
   dimensions = {
     height = 0.9,
-    width = 0.9
-  }
+    width = 0.9,
+  },
 })
 
 local btop = fterm:new({
-  cmd = "btop"
+  cmd = "btop",
 })
 
 local M = {}
@@ -28,7 +28,7 @@ function M.setup()
 
   -- terminal mode
   require("which-key").register({
-    ['<C-t>'] = { '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>', "Toggle Terminal" },
+    ["<C-t>"] = { '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>', "Toggle Terminal" },
   }, { mode = "t", nowait = true })
 
   -- normal mode
@@ -45,19 +45,18 @@ function M.setup()
     [";;"] = { "m`A;<Esc>``j", "Append semicolon and move down" },
 
     -- Ariel
-    ["<C-[>"] = { '<cmd>AerialPrev<CR>', "Ariel Prev" },
-    ["<C-]>"] = { '<cmd>AerialNext<CR>', "Ariel Next" },
+    ["<C-[>"] = { "<cmd>AerialPrev<CR>", "Ariel Prev" },
+    ["<C-]>"] = { "<cmd>AerialNext<CR>", "Ariel Next" },
 
     -- terminal
-    ['<C-t>'] = {
-      ['<C-t>'] = { '<CMD>lua require("FTerm").toggle()<CR>', "Toggle Terminal" },
-      ['<C-b>'] = {
+    ["<C-t>"] = {
+      ["<C-t>"] = { '<CMD>lua require("FTerm").toggle()<CR>', "Toggle Terminal" },
+      ["<C-b>"] = {
         function()
           btop:toggle()
         end,
-        "Toggle BTOP"
+        "Toggle BTOP",
       },
-
     },
 
     ["g"] = {
@@ -81,14 +80,13 @@ function M.setup()
     ["<tab>"] = {
       ["w"] = { ":WhichKey<cr>", "Show WhichKey Help" },
       ["<tab>"] = { "<cmd>Telescope oldfiles<cr>", "Recent files" },
-
     },
     ["<leader>"] = {
       ["<leader>"] = { "<cmd>Telescope fd hidden=true<cr>", "Find files" },
       ["<tab>"] = { ":NeoTreeRevealToggle<CR>", "Toggle Neotree" },
       ["n"] = {
         name = "Numbers",
-        n = { ":set number<cr>", "Enable Line Numbers" },
+        n = { ":set number<cr>:set norelativenumber<cr>", "Enable Line Numbers" },
         r = { ":set number<cr>:set relativenumber<cr>", "Enable Relative Line Numbers" },
         o = { ":set number!<cr>:set relativenumber!<cr>", "Disable Line Numbers" },
       },
@@ -115,8 +113,10 @@ function M.setup()
           "<cmd>lua require'dap.ext.vscode'.load_launchjs()<cr><cmd>lua require'dap'.continue()<cr>",
           "Launch debug session",
         },
-        t = { "<cmd>lua require'dap'.terminate()<cr><cmd>lua require'dapui'.close()<cr>",
-          "Terminate debug session" },
+        t = {
+          "<cmd>lua require'dap'.terminate()<cr><cmd>lua require'dapui'.close()<cr>",
+          "Terminate debug session",
+        },
       },
       f = {
         name = "Fuzzy finder",
@@ -142,7 +142,7 @@ function M.setup()
           function()
             gitui:toggle()
           end,
-          "Git UI"
+          "Git UI",
         },
         o = { "<cmd>lua require('neogit').open({ kind = 'floating' })<cr>", "Open Neogit" },
         d = { ":DiffviewOpen<cr>", "Open DiffView" },
@@ -163,13 +163,11 @@ function M.setup()
         m = { "<cmd>MarkdownPreview<cr>", "Start Markdown Preview" },
         s = { "<cmd>MarkdownPreviewStop<cr>", "Stop Markdown Preview" },
         t = { "<cmd>MarkdownPreviewToggle<cr>", "Toggle Markdown Preview" },
-
       },
       r = {
         name = "Rust",
         h = { "<cmd>RustLsp hover actions<cr>", "Hover actions" },
-        a = { "<cmd>RustLsp codeAction<cr>",
-          "Code actions" },
+        a = { "<cmd>RustLsp codeAction<cr>", "Code actions" },
         r = { "<cmd>RustLsp runnables<cr>", "Runnables" },
         d = { "<cmd>RustLsp debuggables<cr>", "Debuggables" },
         t = { "<cmd>RustLsp testables<cr>", "Testables" },
@@ -181,8 +179,7 @@ function M.setup()
         a = { "<cmd>lua require('searchbox').match_all()<cr>", "Match all" },
         r = { "<cmd>lua require('searchbox').replace()<cr>", "Replace" },
         o = { "<cmd>lua require('spectre').open()<cr>", "Open search dialogue" },
-        w = { "<cmd>lua require('spectre').open_visual({select_word=true})<cr>",
-          "Search current word" },
+        w = { "<cmd>lua require('spectre').open_visual({select_word=true})<cr>", "Search current word" },
         f = { "<cmd>lua require('spectre').open_file_search()<cr>", "Search in current file" },
       },
       u = {
@@ -208,7 +205,7 @@ function M.setup()
       },
       z = {
         z = { "<cmd>ZenMode<cr>", "Zen Mode for current Buffer" },
-      }
+      },
     },
     ["<F5>"] = { "<cmd>lua require'dap'.step_into()<cr>", "Step into" },
     ["<F6>"] = { "<cmd>lua require'dap'.step_over()<cr>", "Step over" },

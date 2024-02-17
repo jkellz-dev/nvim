@@ -38,6 +38,7 @@ return require("lazy").setup({
   -- better notifications
   {
     "rcarriga/nvim-notify",
+    -- "ls-devs/nvim-notify",
     config = function()
       vim.notify = require("notify")
     end,
@@ -200,19 +201,21 @@ return require("lazy").setup({
     cmd = { "ConformInfo" },
     opts = {
       formatters_by_ft = {
+        elm = { "elm_format" },
         fish = { "fish_indent" },
         go = { "goimports", "gofmt" },
         javascript = { { "prettierd", "prettier" } },
-        json = { "jq" },
+        json = { "fixjson", "jq" },
         justfile = { "just", "typos" },
         lua = { "stylua" },
         markdown = { { "mdformat", "markdownlint-cli2" }, "typos" },
         mysql = { "sql_formatter", "typos" },
         postgresql = { "sql_formatter", "typos" },
+        -- proto = { "buf" },
         psql = { "sql_formatter", "typos" },
         python = { "isort", "black" },
         rust = { "rustfmt", "typos" },
-        sh = { "shellcheck" },
+        sh = { "shellcheck", "shellharden" },
         sql = { "sql_formatter", "typos" },
         sqlite = { "sql_formatter", "typos" },
         terraform = { "terraform_fmt" },
@@ -294,7 +297,7 @@ return require("lazy").setup({
     config = function()
       vim.g.rustaceanvim = {
         -- Plugin configuration
-        tools = {},
+        -- tools = {},
         -- LSP configuration
         server = {
           -- on_attach = function(client, bufnr)
@@ -703,4 +706,10 @@ return require("lazy").setup({
     end,
     event = "BufEnter",
   },
+
+  -- CQL
+  { "elubow/cql-vim" },
+
+  -- Oso/Polar
+  { "osohq/polar.vim" },
 })
