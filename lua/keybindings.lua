@@ -10,8 +10,8 @@ local gitui = fterm:new({
   },
 })
 
-local btop = fterm:new({
-  cmd = "btop",
+local btm = fterm:new({
+  cmd = "btm",
 })
 
 local M = {}
@@ -53,9 +53,9 @@ function M.setup()
       ["<C-t>"] = { '<CMD>lua require("FTerm").toggle()<CR>', "Toggle Terminal" },
       ["<C-b>"] = {
         function()
-          btop:toggle()
+          btm:toggle()
         end,
-        "Toggle BTOP",
+        "Toggle BTM",
       },
     },
 

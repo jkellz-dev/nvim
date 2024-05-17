@@ -24,9 +24,10 @@ function M.setup()
       "terraformls",
       "tsserver",
       "yamlls",
+      "fsautocomplete",
     },
     -- automatic_installation = true,
-    automatic_installation = { exclude = { "clangd", "helm_ls" } }
+    automatic_installation = { exclude = { "clangd", "helm_ls" } },
   })
 end
 
