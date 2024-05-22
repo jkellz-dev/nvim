@@ -33,7 +33,8 @@ vim.api.nvim_create_autocmd("VimEnter", {
   command = "set nornu nonu | Neotree reveal",
 })
 
-local textedit = vim.api.nvim_create_augroup("filetypes", { clear = true })
+vim.api.nvim_create_augroup("filetypes", { clear = true })
+
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   group = "filetypes",
   pattern = { "*.secrets" },
@@ -61,5 +62,12 @@ vim.api.nvim_create_autocmd("LspAttach", {
       vim.lsp.inlay_hint.enable(true, { bufnr = args.buf })
     end
     -- whatever other lsp config you want
+  end,
+})
+--  e.g. ~/.local/share/chezmoi/*
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  pattern = { os.getenv("HOME") .. "/.local/share/chezmoi/*" },
+  callback = function()
+    vim.schedule(require("chezmoi.commands.__edit").watch)
   end,
 })

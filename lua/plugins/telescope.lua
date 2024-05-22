@@ -12,7 +12,7 @@ function M.setup()
       -- config_key = value,
       file_ignore_patterns = {
         ".git",
-        "node_modules"
+        "node_modules",
       },
       mappings = {
         i = {
@@ -26,7 +26,7 @@ function M.setup()
         n = {
           ["<C-t>"] = trouble.open_with_trouble,
           ["<C-q>"] = trouble.open_with_trouble,
-        }
+        },
       },
     },
     pickers = {
@@ -44,6 +44,8 @@ function M.setup()
       -- please take a look at the readme of the extension you want to configure
     },
   })
+
+  telescope.load_extension("chezmoi")
 end
 
 return M
