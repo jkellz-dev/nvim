@@ -719,7 +719,10 @@ return require("lazy").setup({
   -- chezmoi dotfile management
   {
     "xvzc/chezmoi.nvim",
-    dependencies = { "nvim-lua/plenary.nvim" },
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "alker0/chezmoi.vim",
+    },
     config = function()
       require("chezmoi").setup({
         -- your configurations

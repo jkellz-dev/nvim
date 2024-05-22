@@ -8,6 +8,7 @@
   "barbecue.nvim": { "branch": "main", "commit": "d38a2a023dfb1073dd0e8fee0c9be08855d3688f" },
   "bufferline.nvim": { "branch": "main", "commit": "eba37af2699143efe7a8b1ffc57bf31756b73100" },
   "chezmoi.nvim": { "branch": "main", "commit": "7c7746adced0e4ba5b1be4dd766a786ffddc65c1" },
+  "chezmoi.vim": { "branch": "main", "commit": "10f2692791b5e512a2c1bb4dc560b42ca5bf71fd" },
   "clangd_extensions.nvim": { "branch": "main", "commit": "f36d788f05cfb73d4fd2e606e6ad15f8b842124f" },
   "cmp-buffer": { "branch": "main", "commit": "3022dbc9166796b644a841a02de8dd1cc1d311fa" },
   "cmp-calc": { "branch": "main", "commit": "5947b412da67306c5b68698a02a846760059be2e" },
