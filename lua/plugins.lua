@@ -219,7 +219,7 @@ return require("lazy").setup({
         sql = { "sql_formatter", "typos" },
         sqlite = { "sql_formatter", "typos" },
         terraform = { "terraform_fmt" },
-        yaml = { "yq" },
+        -- yaml = { "yq" },
       },
       format_on_save = { timeout_ms = 500, lsp_fallback = true },
     },
@@ -385,6 +385,7 @@ return require("lazy").setup({
       "nvim-lua/plenary.nvim",
       "antoinemadec/FixCursorHold.nvim",
       "nvim-treesitter/nvim-treesitter",
+      "nvim-neotest/nvim-nio",
     },
     config = function()
       require("neotest").setup({

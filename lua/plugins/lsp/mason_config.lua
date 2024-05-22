@@ -25,6 +25,7 @@ function M.setup()
       "tsserver",
       "yamlls",
       "fsautocomplete",
+      "elixirls",
     },
     -- automatic_installation = true,
     automatic_installation = { exclude = { "clangd", "helm_ls" } },
