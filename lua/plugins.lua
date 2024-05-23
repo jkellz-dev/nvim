@@ -728,11 +728,11 @@ return require("lazy").setup({
       require("chezmoi").setup({
         -- your configurations
         edit = {
-          watch = true,
+          watch = false,
           force = false,
         },
         notification = {
-          on_open = true,
+          on_open = false,
           on_apply = true,
           on_watch = false,
         },
